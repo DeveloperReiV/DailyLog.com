@@ -1,0 +1,15 @@
+.back{
+	background-image: url('http://dailylog.com/assets/image/background.jpg');
+	/*opacity: 0.6;*/
+}
+
+.tbs{
+	background-color: ghostwhite;
+}
+
+.table-head{
+	font-weight: bold;
+	font-family: Monaco;
+	font-size: larger;
+	/*font-style: oblique;*/
+}
