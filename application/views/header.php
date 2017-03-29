@@ -48,6 +48,10 @@
 
                 </div>
         </nav>
+
+<!--        <div class="well well-sm">-->
+<!--            <span id="doc_time"></span>-->
+<!--        </div>-->
     </div>
 <!--</div>-->
 

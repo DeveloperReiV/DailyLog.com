@@ -32,7 +32,6 @@ class Model
     public static function findAll()
     {
         $db = new DataBase();
-        //echo get_called_class();
         $db->setClassName(get_called_class());
 
         $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY date DESC';

@@ -8,6 +8,13 @@ class Notice extends Model
 {
     protected static $table = 'notice';
 
+    /**
+     * Формирует массив заметок разбитый по категориям.
+     *
+     * @param $notices - объект класса Notice
+     *
+     * @return array массив вида [[номер категории] => [массив заметок относящийся к этой категории]]
+     */
     public static function sortNoticeOnCategory($notices)
     {
         $res = [];

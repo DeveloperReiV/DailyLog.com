@@ -1,8 +1,3 @@
-<div class="row">
-
-</div>
-
-
 <div class="panel panel-default">
     <div class="panel-body">
 
@@ -22,14 +17,14 @@
 
                         <thead>
                             <?php if(isset($notices[$key])): ?>
-                                <tr class="success table-head">
-                                    <td width="10%">№</td>
+                                <tr class="info table-head">
+                                    <td width="5%">№</td>
                                     <td width="20%">Дата</td>
-                                    <td width="60%">Текст заметки</td>
-                                    <td width="20%">Статус</td>
+                                    <td width="64%">Текст заметки</td>
+                                    <td width="21%">Статус</td>
                                 </tr>
                             <?php else: ?>
-                                <tr class="success table-head">
+                                <tr class="info table-head">
                                     <td>Записей в данной категории нет</td>
                                 </tr>
                             <?php endif; ?>
@@ -43,7 +38,13 @@
                                         <td><?=$cnt?></td>
                                         <td><?=$note['date']?></td>
                                         <td><?=$note['note']?></td>
-                                        <td><?=$note['importance']?></td>
+
+                                        <?php if($note['importance'] == 1): ?>
+                                            <td><div class="alert alert-success well-sm status">Важно</div></td>
+                                        <?php else: ?>
+                                            <td><div class="alert alert-warning well-sm status">Не важно</div></td>
+                                        <?php endif; ?>
+
                                     </tr>
                                 <?php $cnt++; ?>
                                 <?php endforeach; ?>
@@ -56,5 +57,7 @@
             <?php endforeach; ?>
 
         </div>
+
+
     </div>
 </div>

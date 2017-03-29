@@ -14,3 +14,8 @@
 	font-size: larger;
 	/*font-style: oblique;*/
 }
+
+.status{
+	text-align: center;
+	margin: 0;
+}
