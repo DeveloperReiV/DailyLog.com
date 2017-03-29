@@ -3,198 +3,58 @@
 </div>
 
 
-
-
 <div class="panel panel-default">
     <div class="panel-body">
+
         <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#panel1">Работа</a></li>
-            <li><a data-toggle="tab" href="#panel2">Домашние дела</a></li>
-            <li><a data-toggle="tab" href="#panel3">Семья</a></li>
-            <li><a data-toggle="tab" href="#panel4">Личное</a></li>
+            <?php foreach($category as $key => $cat): ?>
+            <li <?php if($key=='1') echo 'class="active"'?>><a data-toggle="tab" href="#panel<?=$key?>"><?=$cat?></a></li>
+            <?php endforeach; ?>
         </ul>
 
         <div class="tab-content">
 
-            <div id="panel1" class="tab-pane fade in active">
+            <?php foreach($category as $key => $cat): ?>
+                <div id="panel<?=$key?>" class="tab-pane fade <?php if($key=='1') echo 'in active'?>">
                 <br>
-                <div class="table-responsive table-bordered">
+                <div class="table-responsive">
                     <table class="table table-hover">
-                        <thead>
-                        <tr class="success table-head">
-                            <td width="10%">№</td>
-                            <td width="20%">Дата</td>
-                            <td width="60%">Текст заметки</td>
-                            <td width="20%">Статус</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>ss</td>
-                            <td>ss</td>
-                            <td>sss</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <div id="panel2" class="tab-pane fade">
-                <br>
-                <div class="table-responsive table-bordered">
-                    <table class="table table-hover">
                         <thead>
-                        <tr>
-                            <td>Номер</td>
-                            <td>Дата</td>
-                            <td>Текст заметки</td>
-                            <td>Статус</td>
-                        </tr>
+                            <?php if(isset($notices[$key])): ?>
+                                <tr class="success table-head">
+                                    <td width="10%">№</td>
+                                    <td width="20%">Дата</td>
+                                    <td width="60%">Текст заметки</td>
+                                    <td width="20%">Статус</td>
+                                </tr>
+                            <?php else: ?>
+                                <tr class="success table-head">
+                                    <td>Записей в данной категории нет</td>
+                                </tr>
+                            <?php endif; ?>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <div id="panel3" class="tab-pane fade">
-                <br>
-                <div class="table-responsive table-bordered">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <td>Номер</td>
-                            <td>Дата</td>
-                            <td>Текст заметки</td>
-                            <td>Статус</td>
-                        </tr>
-                        </thead>
                         <tbody>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
+                            <?php if(isset($notices[$key])): ?>
+                                <?php $cnt = 1; ?>
+                                <?php foreach($notices[$key] as $note): ?>
+                                    <tr>
+                                        <td><?=$cnt?></td>
+                                        <td><?=$note['date']?></td>
+                                        <td><?=$note['note']?></td>
+                                        <td><?=$note['importance']?></td>
+                                    </tr>
+                                <?php $cnt++; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </tbody>
-                    </table>
-                </div>
-            </div>
 
-            <div id="panel3" class="tab-pane fade">
-                <br>
-                <div class="table-responsive table-bordered">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <td>Номер</td>
-                            <td>Дата</td>
-                            <td>Текст заметки</td>
-                            <td>Статус</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>
+            <?php endforeach; ?>
 
-            <div id="panel4" class="tab-pane fade">
-                <br>
-                <div class="table-responsive table-bordered">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <td>Номер</td>
-                            <td>Дата</td>
-                            <td>Текст заметки</td>
-                            <td>Статус</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        <tr>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                            <td>ыыы</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
         </div>
     </div>
 </div>
