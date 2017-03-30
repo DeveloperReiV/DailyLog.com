@@ -15,3 +15,13 @@ function getAllCategory()
     ];
 }
 
+function getDateFromTimestamp($timestamp)
+{
+    return date('d.m.Y',strtotime($timestamp));
+}
+
+function getTimeFromTimestamp($timestamp)
+{
+    return date('G:i',strtotime($timestamp));
+}
+

@@ -12,7 +12,7 @@
 <body class="back">
 
 <!--<div class="navbar-wrapper">-->
-    <div class="container">
+    <div class="container-fluid">
         <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -29,6 +29,7 @@
                         <li onclick="getActionMenu(this)"><a href="/">Главная</a></li>
                         <li onclick="getActionMenu(this)"><a href="/notice">Заметки</a></li>
                         <li onclick="getActionMenu(this)"><a href="#">Телефонная книга</a></li>
+                        <li onclick="getActionMenu(this)"><a href="#">Личный кабинет</a></li>
                     </ul>
 
                     <form class="navbar-form navbar-right" role="search">

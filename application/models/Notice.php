@@ -22,8 +22,8 @@ class Notice extends Model
         {
             if($note->category != null)
             {
-                $arr = (array)$note->data;
-                $res["{$arr['category']}"][]= $arr;
+                $arr = (array) $note->data;
+                $res["{$arr['category']}"][] = $arr;
             }
         }
         return $res;

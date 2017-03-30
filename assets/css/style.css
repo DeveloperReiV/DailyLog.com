@@ -19,3 +19,8 @@
 	text-align: center;
 	margin: 0;
 }
+
+/*Заголовок панели важных заметок*/
+.title-panel-imp-note{
+	text-align: center;
+}
