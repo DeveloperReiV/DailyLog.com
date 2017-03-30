@@ -12,11 +12,11 @@
         <?php $i = 1; ?>
         <?php foreach($imp_notes as $note): ?>
                 <div class="item <? if($i == 1) echo 'active';?>">
-                    <img alt="Главное на сегодня" src="">
+                    <img alt="Главное на сегодня" src="<?=SITE_HOST . '/assets/image/important.jpg'?>">
                     <div class="container">
                         <div class="carousel-caption">
-                            <h1><?=$note->header?></h1>
-                            <p><?=$note->date?></p>
+                            <h1><a href=""><?=$note->header?></a></h1>
+                            <p><?=getDateFromTimestamp($note->date)?></p>
                             <p><?=$note->description?></p>
                         </div>
                     </div>
