@@ -38,7 +38,7 @@ class DataBase
     }
 
     /**
-     * Выполняет запрос с параметрами
+     * Выполняет запрос с параметрами и возвращает результат в виде объекта
      *
      * @param $statement    - запрос для выполнения
      * @param array $params - параметры запроса (необязательный параметр)
@@ -51,6 +51,31 @@ class DataBase
         $stmt = $this->dbh->prepare( $statement );          //подготавливаем запрос
         $stmt->execute( $params );                          //выполняем запрос с подстановкой параметров
         return $stmt->fetchAll( \PDO::FETCH_CLASS, $this->className );
+    }
+
+    /**
+     * Выполняет запрос с параметрами
+     *
+     * @param $sql
+     * @param array $params
+     *
+     * @return bool
+     */
+    public function execute($sql, $params = [])
+    {
+        $sth = $this->dbh->prepare($sql);
+        $result = $sth->execute($params);
+        return $result;
+    }
+
+    /**
+     * Получаем ID последней вставленной строки
+     *
+     * @return string
+     */
+    public function lastInsertId()
+    {
+        return $this->dbh->lastInsertId();
     }
 
 

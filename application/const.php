@@ -9,6 +9,7 @@ define( 'VIEW_PATH', __DIR__ . DS . 'views' . DS );                //путь к
 define('UPLOAD_FILES', __DIR__ . DS . 'upload');                    //путь к загружаемым файлам
 
 define('SITE_HOST', 'http://' . $_SERVER['HTTP_HOST']);             //url ссылка сайта
+define('DR', __DIR__);  //путь до папки приложения
 
 
 //параметры подключения к базе данных

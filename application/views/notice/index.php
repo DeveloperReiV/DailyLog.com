@@ -1,13 +1,5 @@
 <div class="row">
-    <div class="col-sm-2">
-        <div class="list-group">
-            <a href="#" class="list-group-item">Добавить заметку</a>
-            <a href="#" class="list-group-item">Удалить заметку</a>
-<!--             -->
-        </div>
-    </div>
-
-    <div class="col-sm-10">
+    <div class="col-sm-12">
         <div class="panel panel-default">
             <div class="panel-body">
 
@@ -15,6 +7,11 @@
                     <?php foreach($category as $key => $cat): ?>
                         <li <?php if($key=='1') echo 'class="active"'?>><a data-toggle="tab" href="#panel<?=$key?>"><?=$cat?></a></li>
                     <?php endforeach; ?>
+
+                    <div class="btn-group" style="float: right;">
+                        <a href="/notice/add" class="btn btn-default btn-xs">Новая заметка</a>
+                    </div>
+
                 </ul>
 
                 <div class="tab-content">
@@ -34,6 +31,8 @@
                                             <td>Дата</td>
                                             <td>Время</td>
                                             <td>Статус</td>
+                                            <td></td>
+
                                         </tr>
                                     <?php else: ?>
                                         <tr class="info table-head">
@@ -58,6 +57,11 @@
                                                 <?php else: ?>
                                                     <td><div class="alert alert-warning well-sm status"></div></td>
                                                 <?php endif; ?>
+
+                                                <td class="title-panel-imp-note" width="5%">
+                                                    <a href="/notice/edit?id=<?=$note['id']?>" title="Редактировать заметку '<?=$note['header']?>'"><span class="glyphicon glyphicon-pencil"></a></span>
+                                                    <a href="/notice/delete?id=<?=$note['id']?>" title="Удалить заметку '<?=$note['header']?>'"><span class="glyphicon glyphicon-remove"></a></span>
+                                                </td>
                                             </tr>
                                             <?php $cnt++; ?>
                                         <?php endforeach; ?>
@@ -70,6 +74,8 @@
                         </div>
                     <?php endforeach; ?>
                 </div>
+
+
             </div>
         </div>
     </div>

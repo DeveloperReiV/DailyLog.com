@@ -15,13 +15,39 @@ function getAllCategory()
     ];
 }
 
+/**
+ * вернуть дату в формате дд.мм.гггг из timestamp
+ *
+ * @param $timestamp
+ *
+ * @return bool|string
+ */
 function getDateFromTimestamp($timestamp)
 {
     return date('d.m.Y',strtotime($timestamp));
 }
 
+/**
+ * вернуть время в формате чч:мм из timestamp
+ *
+ * @param $timestamp
+ *
+ * @return bool|string
+ */
 function getTimeFromTimestamp($timestamp)
 {
     return date('G:i',strtotime($timestamp));
+}
+
+function showWarning($mes)
+{
+    echo "<div class='alert alert-danger'>$mes</div>";
+    unset($_SESSION['warning']);
+}
+
+function showSuccess($mes)
+{
+    echo "<div class='alert alert-success'>$mes</div>";
+    unset($_SESSION['success']);
 }
 

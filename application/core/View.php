@@ -61,6 +61,6 @@ class View
     public function display( $template )
     {
         $content = $this->render( $template );
-        include '\..\views\base.php';
+        include DR . '\views\base.php';
     }
 }

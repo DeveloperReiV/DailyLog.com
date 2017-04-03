@@ -62,4 +62,50 @@ class Model
 
         return false;
     }
+
+    /**
+     * Удалить запись из таблицы по ID
+     *
+     * @param $id
+     *
+     * @return bool
+     */
+    public static function delete($id)
+    {
+        $db = new DataBase();
+
+        $sql = 'DELETE FROM ' . static::$table . ' WHERE id = :id';
+
+        return $db->execute($sql, [':id' => $id]);
+    }
+
+    /**
+     * добавить новую запись в БД
+     *
+     * @return bool
+     */
+    public function insert()
+    {
+        $db          = new DataBase();
+        $cols        = array_keys($this->data);    //формируем массив cols заполненный ключами массива data
+        $colsPrepare = array_map(function ($col_name){return ':' . $col_name;}, $cols);  //перед каждым элементом массива cols добавляем ":"
+        $dataExec    = [];
+        foreach($this->data as $key => $value)
+        {
+            $dataExec[':' . $key] = $value;
+        }
+        $sql    = 'INSERT INTO ' . static::$table . ' (' . implode(', ', $cols) . ') VALUES (' . implode(', ', $colsPrepare) . ') ';
+        $result = $db->execute($sql, $dataExec);
+        if(true == $result)
+        {
+            $this->id = $db->lastInsertId();
+        }
+
+        return $result;
+    }
+
+    public function save()
+    {
+        return $this->insert();
+    }
 }

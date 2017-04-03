@@ -12,8 +12,16 @@ use app\core\Model;
 
 class Main extends Model
 {
+    /**
+     * Выбор важных заметок на сегоднешний день из  массива $notes
+     *
+     * @param $notes
+     *
+     * @return array
+     */
     public static function getNotesImportanceToday($notes)
-    {   $res = [];
+    {
+        $res = [];
 
         foreach($notes as $note)
         {

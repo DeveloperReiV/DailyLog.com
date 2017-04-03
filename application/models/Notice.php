@@ -8,6 +8,12 @@ class Notice extends Model
 {
     protected static $table = 'notice';
 
+//    public $header;
+//    public $description;
+//    public $date;
+//    public $importance;
+//    public $category;
+
     /**
      * Формирует массив заметок разбитый по категориям.
      *
@@ -22,10 +28,11 @@ class Notice extends Model
         {
             if($note->category != null)
             {
-                $arr = (array) $note->data;
+                $arr                         = (array) $note->data;
                 $res["{$arr['category']}"][] = $arr;
             }
         }
+
         return $res;
     }
 }
