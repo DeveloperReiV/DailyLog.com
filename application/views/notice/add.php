@@ -15,7 +15,7 @@
         ?>
 
 
-        <?php if(empty($st)): ?>
+        <?php if(empty($form)): ?>
             <?php if(empty($note)): ?>
 
                 <form action="/notice/insert" method="post">

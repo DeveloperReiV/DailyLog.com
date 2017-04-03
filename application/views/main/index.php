@@ -41,7 +41,7 @@
                     <div class="caption">
                         <h3><a href=""><?=$note->header?></a></h3>
                         <h4><?=getDateFromTimestamp($note->date)?></h4>
-                        <p><?=$note->description?></p>
+                        <p><?=mb_substr($note->description, 0, 50) . '...'?></p>
                     </div>
                 </div>
             </div>

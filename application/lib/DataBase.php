@@ -73,10 +73,10 @@ class DataBase
      *
      * @return string
      */
-    public function lastInsertId()
+    /*public function lastInsertId()
     {
         return $this->dbh->lastInsertId();
-    }
+    }*/
 
 
 }

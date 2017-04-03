@@ -64,7 +64,7 @@ class NoticeController extends Controller
                 if($notice->save())
                 {
                     $_SESSION['success'] = "Заметка '{$notice->header}' успешно $st!!!";
-                    $view->st = true;
+                    $view->form = true;
                 }
             }
             else

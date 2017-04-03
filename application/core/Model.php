@@ -97,10 +97,10 @@ class Model
         $sql    = 'INSERT INTO ' . static::$table . ' (' . implode(', ', $cols) . ') VALUES (' . implode(', ', $colsPrepare) . ') ';
         $result = $db->execute($sql, $dataExec);
 
-        if(true == $result)
+        /*if(true == $result)
         {
             $this->id = $db->lastInsertId();
-        }
+        }*/
 
         return $result;
     }
