@@ -36,7 +36,15 @@ function getDateFromTimestamp($timestamp)
  */
 function getTimeFromTimestamp($timestamp)
 {
-    return date('G:i',strtotime($timestamp));
+    if(date('G',strtotime($timestamp))<=9)
+    {
+        $time = '0' . date('G:i',strtotime($timestamp));
+    }
+    else
+    {
+        $time = date('G:i',strtotime($timestamp));
+    }
+    return $time;
 }
 
 function showWarning($mes)

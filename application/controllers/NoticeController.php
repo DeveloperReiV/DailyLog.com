@@ -38,9 +38,21 @@ class NoticeController extends Controller
 
     public function action_insert()
     {
+        $notice = new Notice();
+        $view   = new View();
+
         if($_POST)
         {
-            $notice = new Notice();
+            if(!empty($_GET['id']))
+            {
+                $notice->id = $_GET['id'];
+                $st = 'обновлена';
+            }
+            else
+            {
+                $st = 'добавлена';
+            }
+
             if(!empty($_POST['header']) && !empty($_POST['date']) && !empty($_POST['category']))
             {
                 $notice->header      = $_POST['header'];
@@ -48,24 +60,33 @@ class NoticeController extends Controller
                 $notice->date        = $_POST['date'] . ' ' . $_POST['time'] . ':' . '00';
                 $notice->importance  = $_POST['importance'];
                 $notice->category    = $_POST['category'];
+
                 if($notice->save())
                 {
-                    $_SESSION['success'] = 'Заметка добавлена успешно!!!';
+                    $_SESSION['success'] = "Заметка '{$notice->header}' успешно $st!!!";
+                    $view->st = true;
                 }
             }
             else
             {
                 $_SESSION['warning'] = 'Поля отмеченные * заполнять обязательно!!!';
             }
-
-            $view = new View();
-            $view->category = getAllCategory();                         //получаем список всех категорий
-            $view->display('notice\add.php');
         }
+
+        $view->category = getAllCategory();                         //получаем список всех категорий
+        $view->display('notice\add.php');
     }
 
     public function action_edit()
     {
+        $id = $_GET['id'];
 
+        if($id)
+        {
+            $view           = new View();
+            $view->category = getAllCategory();                         //получаем список всех категорий
+            $view->note     = Notice::findByColumn('id', $id)[0];
+            $view->display('notice\add.php');
+        }
     }
 }

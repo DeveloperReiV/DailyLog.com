@@ -96,6 +96,7 @@ class Model
         }
         $sql    = 'INSERT INTO ' . static::$table . ' (' . implode(', ', $cols) . ') VALUES (' . implode(', ', $colsPrepare) . ') ';
         $result = $db->execute($sql, $dataExec);
+
         if(true == $result)
         {
             $this->id = $db->lastInsertId();
@@ -104,8 +105,33 @@ class Model
         return $result;
     }
 
+    /**
+     * обновить запись в БД
+     *
+     * @return bool
+     */
+    protected function update()
+    {
+        $db = new DataBase();
+        $data = [];
+        $dataExec = [];
+        foreach ($this->data as $key=>$value) {
+            $dataExec[':' . $key] = $value;
+            if ($key == 'id') {
+                continue;
+            }
+            $data[] = $key . ' = :' . $key;
+        }
+        $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $data) . ' WHERE id=:id';
+        return  $db->execute($sql, $dataExec);
+    }
+
     public function save()
     {
-        return $this->insert();
+        if (isset($this->id)) {
+            return $this->update();
+        } else {
+            return $this->insert();
+        }
     }
 }
