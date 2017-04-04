@@ -23,13 +23,12 @@
                     </tr>
                     <tr>
                         <td class="active"><h3>Статус</h3></td>
-                        <td>
-                            <?php if($note->importance == 1): ?>
-                                <div class="alert alert-success well-sm status">Важно</div>
-                            <?php else: ?>
-                                <div class="alert alert-warning well-sm status">Не важно</div>
-                            <?php endif; ?>
-                        </td>
+
+                        <?php if($note->importance == 1): ?>
+                            <td class="success"><h3>Важно</h3></td>
+                        <?php else: ?>
+                            <td class="warning"><h3>Не важно</h3></td>
+                        <?php endif; ?>
                     </tr>
                     <tr>
                         <td class="active"><h3>Дата создания</h3></td>

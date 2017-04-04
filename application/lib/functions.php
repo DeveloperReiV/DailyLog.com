@@ -68,3 +68,26 @@ function showSuccess($mes)
     echo "<div class='alert alert-success'>$mes</div>";
     unset($_SESSION['success']);
 }
+
+/**
+ * Сравнивает текущую дату с датой переданной в $data.
+ * Если текущая дата больше, возвращает false, иначе true
+ *
+ * @param $date
+ *
+ * @return bool
+ */
+function comparisonDate($date)
+{
+    $currentDate = date('Y-m-d');
+    $date        = date('Y-m-d',strtotime($date));
+
+    if($date < $currentDate)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}

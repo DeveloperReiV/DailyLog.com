@@ -1,3 +1,15 @@
+<div class="panel panel-default" style="text-align: center;">
+    <div class="panel-body">
+        <table class="table" style="margin: 0; text-align: center;">
+            <tr>
+                <td class="danger">Просроченные заметки</td>
+                <td class="success">Важные заметки</td>
+                <td class="warning">Не важные заметки</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
 <div class="row">
     <div class="col-sm-12">
         <div class="panel panel-default">
@@ -47,15 +59,21 @@
                                         <?php foreach($notices[$key] as $note): ?>
                                             <tr>
                                                 <td><?=$cnt?></td>
-                                                <td><a href="/notice/view?id=<?=$note['id']?>"><?=$note['header']?></a></td>
+
+                                                <?php  if(comparisonDate($note['date'])):?>
+                                                    <td><a href="/notice/view?id=<?=$note['id']?>"><?=$note['header']?></a></td>
+                                                <?php  else: ?>
+                                                    <td class="danger"><a href="/notice/view?id=<?=$note['id']?>"><?=$note['header']?></a></td>
+                                                <?php  endif;?>
+
                                                 <td><?=$note['description']?></td>
                                                 <td><?=getDateFromTimestamp($note['date'])?></td>
                                                 <td><?=getTimeFromTimestamp($note['date'])?></td>
 
                                                 <?php if($note['importance'] == 1): ?>
-                                                    <td><div class="alert alert-success well-sm status"></div></td>
+                                                    <td class="success"></td>
                                                 <?php else: ?>
-                                                    <td><div class="alert alert-warning well-sm status"></div></td>
+                                                    <td class="warning"></td>
                                                 <?php endif; ?>
 
                                                 <td class="title-panel-imp-note" width="5%">

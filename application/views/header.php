@@ -27,7 +27,7 @@
                 <ul class="nav navbar-nav" id="menu">
                     <li onclick="getActionMenu(this)"><a href="/">Главная</a></li>
                     <li onclick="getActionMenu(this)"><a href="/notice">Заметки</a></li>
-                    <li onclick="getActionMenu(this)"><a href="#">Телефонная книга</a></li>
+                    <li onclick="getActionMenu(this)"><a href="/teldir">Телефонная книга</a></li>
                     <li onclick="getActionMenu(this)"><a href="#">Личный кабинет</a></li>
                 </ul>
 
@@ -38,13 +38,11 @@
                              <button type="submit" class="btn btn-default">Найти</button>
                         </span>
                     </div>
-
                 </form>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <h3><span id="doc_time"></span></h3>
+                <ul class="navbar-form navbar-right">
+                    <h3 style="margin: 0;"><span id="doc_time"></span></h3>
                 </ul>
-
 
             </div>
     </nav>
