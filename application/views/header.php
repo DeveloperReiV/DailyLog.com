@@ -42,7 +42,7 @@
                 </form>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <h3><span class="label label-default" id="doc_time"></span></h3>
+                    <h3><span id="doc_time"></span></h3>
                 </ul>
 
 

@@ -89,4 +89,16 @@ class NoticeController extends Controller
             $view->display('notice\add.php');
         }
     }
+
+    public function action_view()
+    {
+        $view = new View();
+        if($_GET['id'])
+        {
+            $id         = $_GET['id'];
+            $view->note = Notice::findByColumn('id', $id)[0];
+            $view->category = getAllCategory();                         //получаем список всех категорий
+        }
+        $view->display('notice\view.php');
+    }
 }

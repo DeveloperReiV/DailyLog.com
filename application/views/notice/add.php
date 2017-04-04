@@ -9,8 +9,10 @@
         <?php
             if(!empty($_SESSION['success']))
             {
-                showSuccess($_SESSION['success']);
-                echo '<a href="\notice" class="btn btn-default btn-sm">К заметкам</a>';
+                echo '<div class="container" style="text-align: center;">';
+                    showSuccess($_SESSION['success']);
+                    echo '<a href="\notice"><h3><span class="label label-default">К заметкам</span></a>';
+                echo '</div>';
             }
         ?>
 

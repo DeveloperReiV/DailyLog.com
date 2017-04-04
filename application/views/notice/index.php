@@ -47,7 +47,7 @@
                                         <?php foreach($notices[$key] as $note): ?>
                                             <tr>
                                                 <td><?=$cnt?></td>
-                                                <td><a href=""><?=$note['header']?></a></td>
+                                                <td><a href="/notice/view?id=<?=$note['id']?>"><?=$note['header']?></a></td>
                                                 <td><?=$note['description']?></td>
                                                 <td><?=getDateFromTimestamp($note['date'])?></td>
                                                 <td><?=getTimeFromTimestamp($note['date'])?></td>

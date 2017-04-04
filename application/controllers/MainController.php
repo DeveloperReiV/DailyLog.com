@@ -16,6 +16,7 @@ class MainController extends Controller
         $view = new View();
         $view->notes = Notice::findByColumn('importance', 1);
         $view->imp_notes = Main::getNotesImportanceToday($view->notes);
+        $view->category = getAllCategory();                         //получаем список всех категорий
         $view->display('main\index.php');
     }
 

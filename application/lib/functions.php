@@ -47,15 +47,24 @@ function getTimeFromTimestamp($timestamp)
     return $time;
 }
 
+/**
+ * Вывести предупреждение
+ *
+ * @param $mes
+ */
 function showWarning($mes)
 {
     echo "<div class='alert alert-danger'>$mes</div>";
     unset($_SESSION['warning']);
 }
 
+/**
+ * Вывести сообщение об удаче
+ *
+ * @param $mes
+ */
 function showSuccess($mes)
 {
     echo "<div class='alert alert-success'>$mes</div>";
     unset($_SESSION['success']);
 }
-
