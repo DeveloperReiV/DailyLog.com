@@ -1,3 +1,5 @@
+<title>Заметки</title>
+
 <div class="panel panel-default" style="text-align: center;">
     <div class="panel-body">
         <table class="table" style="margin: 0; text-align: center;">

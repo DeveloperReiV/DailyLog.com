@@ -1,3 +1,5 @@
+<title>Главная</title>
+
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
     <?php  if(!empty($imp_notes)):?>
@@ -16,6 +18,7 @@
                     <div class="item <? if($i == 1) echo 'active';?>">
 <!--                        <img alt="Главное на сегодня" src="--><?//=SITE_HOST . '/assets/image/important.jpg'?><!--">-->
                         <div class="container">
+                            <h1 style="text-align: center">Главное на сегодня</h1>
                             <div class="carousel-caption">
                                 <h1><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></h1>
                                 <p><?=$category[$note->category]?></p>

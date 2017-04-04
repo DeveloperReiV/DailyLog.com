@@ -1,3 +1,5 @@
+<title>Редактор</title>
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <h4 class="title-panel-imp-note">Дабавление телефона</h4>

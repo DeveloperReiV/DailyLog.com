@@ -1,3 +1,5 @@
+<title>Заметка <?=$note->header?></title>
+
 <div class="panel panel-default">
 
     <div class="panel-heading">
@@ -18,8 +20,12 @@
                         <td><h3><?=$note->header?></h3></td>
                     </tr>
                     <tr>
-                        <td class="active"><h3>Дата и время</h3></td>
-                        <td><h3><?=date('d.m.Y  G:i',strtotime($note->date))?></h3></td>
+                        <td class="active"><h3>Дата</h3></td>
+                        <td><h3><?=getDateFromTimestamp($note->date)?></h3></td>
+                    </tr>
+                    <tr>
+                        <td class="active"><h3>Время</h3></td>
+                        <td><h3><?=getTimeFromTimestamp($note->date)?></h3></td>
                     </tr>
                     <tr>
                         <td class="active"><h3>Статус</h3></td>
@@ -32,7 +38,7 @@
                     </tr>
                     <tr>
                         <td class="active"><h3>Дата создания</h3></td>
-                        <td><h3><?=date('d.m.Y  G:i',strtotime($note->crt_date))?></h3></td>
+                        <td><h3><?=date('d.m.Y / G:i',strtotime($note->crt_date))?></h3></td>
                     </tr>
                 </table>
 
