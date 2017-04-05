@@ -1,8 +1,8 @@
-.back{
-	background-image: url('http://dailylog.com/assets/image/background.jpg');
-	/*background-color: rgba(0, 0, 0, 0.5);*/
-	/*opacity: 0.6;*/
-}
+/*.back{*/
+	/*background-image: url('http://dailylog.com/assets/image/background.jpg');*/
+	/*/!*background-color: rgba(0, 0, 0, 0.5);*!/*/
+	/*/!*opacity: 0.6;*!/*/
+/*}*/
 
 .tbs{
 	background-color: ghostwhite;

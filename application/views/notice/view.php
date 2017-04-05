@@ -40,6 +40,14 @@
                         <td class="active"><h3>Дата создания</h3></td>
                         <td><h3><?=date('d.m.Y / G:i',strtotime($note->crt_date))?></h3></td>
                     </tr>
+
+                    <?php if(!comparisonDate($note->date)): ?>
+                    <tr>
+                        <td class="danger"><h3>Просрочено</h3></td>
+                        <td class="danger"></td>
+                    </tr>
+                    <?php endif; ?>
+
                 </table>
 
             </div>
@@ -58,5 +66,6 @@
         </div>
 
         <a href="/notice"><h3><span class="label label-default">К заметкам</span></h3></a>
+
     </div>
 </div>

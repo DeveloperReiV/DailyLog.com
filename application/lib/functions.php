@@ -24,7 +24,7 @@ function getAllCategory()
  */
 function getDateFromTimestamp($timestamp)
 {
-    return date('d.m.Y',strtotime($timestamp));
+    return date('d.m.Y', strtotime($timestamp));
 }
 
 /**
@@ -36,15 +36,7 @@ function getDateFromTimestamp($timestamp)
  */
 function getTimeFromTimestamp($timestamp)
 {
-    if(date('G',strtotime($timestamp))<=9)
-    {
-        $time = '0' . date('G:i',strtotime($timestamp));
-    }
-    else
-    {
-        $time = date('G:i',strtotime($timestamp));
-    }
-    return $time;
+    return date('G', strtotime($timestamp)) <= 9 ? '0' . date('G:i', strtotime($timestamp)) : date('G:i', strtotime($timestamp));
 }
 
 /**
@@ -80,14 +72,7 @@ function showSuccess($mes)
 function comparisonDate($date)
 {
     $currentDate = date('Y-m-d');
-    $date        = date('Y-m-d',strtotime($date));
+    $date        = date('Y-m-d', strtotime($date));
 
-    if($date < $currentDate)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
+    return $date < $currentDate ? false : true;
 }

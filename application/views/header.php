@@ -29,6 +29,7 @@
                     <li onclick="getActionMenu(this)"><a href="/notice">Заметки</a></li>
                     <li onclick="getActionMenu(this)"><a href="/teldir">Телефонная книга</a></li>
                     <li onclick="getActionMenu(this)"><a href="#">Личный кабинет</a></li>
+                    <li onclick="getActionMenu(this)"><a href="/setting">Настройки</a></li>
                 </ul>
 
                 <form class="navbar-form navbar-right" role="search">

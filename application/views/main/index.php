@@ -59,7 +59,7 @@
         <div class="row">
         <?php foreach($notes as $note): ?>
             <div class="col-sm-6 col-md-4">
-                <div class="thumbnail">
+                <div class="thumbnail" <?if (!comparisonDate($note->date)) echo 'style="border-color: red"';?>>
                     <div class="caption">
                         <h3><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></h3>
                         <h4><?=getDateFromTimestamp($note->date)?></h4>

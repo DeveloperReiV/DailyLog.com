@@ -97,11 +97,6 @@ class Model
         $sql    = 'INSERT INTO ' . static::$table . ' (' . implode(', ', $cols) . ') VALUES (' . implode(', ', $colsPrepare) . ') ';
         $result = $db->execute($sql, $dataExec);
 
-        /*if(true == $result)
-        {
-            $this->id = $db->lastInsertId();
-        }*/
-
         return $result;
     }
 
@@ -122,16 +117,18 @@ class Model
             }
             $data[] = $key . ' = :' . $key;
         }
-        $sql = 'UPDATE ' . static::$table . ' SET ' . implode(', ', $data) . ' WHERE id=:id';
+        $sql = 'UPDATE ' . static::$table . ' SET ' . implode(',', $data) . ' WHERE id=:id';
+
         return  $db->execute($sql, $dataExec);
     }
 
+    /**
+     * Сохраняет добавленный или отредактированный элемент
+     *
+     * @return bool
+     */
     public function save()
     {
-        if (isset($this->id)) {
-            return $this->update();
-        } else {
-            return $this->insert();
-        }
+        return isset($this->id) ? $this->update() : $this->insert();
     }
 }
