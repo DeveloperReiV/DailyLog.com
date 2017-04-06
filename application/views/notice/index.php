@@ -1,6 +1,6 @@
 <title>Заметки</title>
 
-<div class="panel panel-default" style="text-align: center;">
+<div class="panel panel-default opacity" style="text-align: center;">
     <div class="panel-body">
         <table class="table" style="margin: 0; text-align: center;">
             <tr>
@@ -14,7 +14,7 @@
 
 <div class="row">
     <div class="col-sm-12">
-        <div class="panel panel-default">
+        <div class="panel panel-default opacity">
             <div class="panel-body">
 
                 <ul class="nav nav-tabs">

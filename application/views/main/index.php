@@ -50,7 +50,7 @@
     <a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
 </div>
 
-<div class="panel panel-default">
+<div class="panel panel-default opacity">
     <div class="panel-heading">
         <h4 class="title-panel-imp-note">Важные заметки</h4>
     </div>

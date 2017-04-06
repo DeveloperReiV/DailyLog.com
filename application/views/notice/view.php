@@ -1,6 +1,6 @@
 <title>Заметка <?=$note->header?></title>
 
-<div class="panel panel-default">
+<div class="panel panel-default opacity">
 
     <div class="panel-heading">
         <h4 class="title-panel-imp-note">Подробная информация</h4>

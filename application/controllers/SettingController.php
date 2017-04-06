@@ -24,4 +24,30 @@ class SettingController extends Controller
            header('location: \setting');
         }
     }
+
+    public function action_delete()
+    {
+        if($_GET['n'])
+        {
+            $path = UPLOAD_DIR . 'background\\' . $_GET['n'];
+            if(file_exists($path))
+            {
+                MyFile::deleteImage($path);
+            }
+        }
+        header('location: \setting');
+    }
+
+    public static function action_setback()
+    {
+        if($_GET['n'])
+        {
+            $path = UPLOAD_DIR . 'background\\' . $_GET['n'];
+            if(file_exists($path))
+            {
+                setcookie('backIMG', $_GET['n'], time()+60*60*24*360, '/', 'dailylog.com');
+            }
+        }
+        header('location: \setting');
+    }
 }

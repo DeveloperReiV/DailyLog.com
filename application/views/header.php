@@ -9,7 +9,11 @@
     <link rel="stylesheet" type="text/css" href="/../assets/css/style.css">
 </head>
 
-<body class="back">
+<?php if(!empty($_COOKIE['backIMG'])):?>
+<body style="background: url(<?=SITE_HOST . '/application/upload/background/' . $_COOKIE['backIMG']?>)">
+<?php else: ?>
+<body>
+<?php endif; ?>
 
 <div class="container-fluid">
     <nav class="navbar navbar-default" role="navigation">

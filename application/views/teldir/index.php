@@ -4,7 +4,7 @@
     <div class="col-sm-12">
 
 
-        <div class="panel panel-default">
+        <div class="panel panel-default opacity">
 
             <div class="panel-heading" style="text-align: right;">
                 <a href="/teldir/add" class="btn btn-default btn-xs">Новый номер</a>

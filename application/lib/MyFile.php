@@ -27,12 +27,13 @@ class MyFile
     public static function getAllFiles($dir)
     {
         $images = scandir(UPLOAD_DIR . $dir, 1);
+        unset($images[count($images)-1]);
+        unset($images[count($images)-1]);
+        return $images;
+    }
 
-        for($i=0; $i<(count($images)-2); $i++)
-        {
-            $arr[$i] = SITE_HOST . '/application/upload/' . $dir . '/' . $images[$i];
-        }
-
-        return $arr;
+    public static function deleteImage($path)
+    {
+        return unlink($path);
     }
 }
