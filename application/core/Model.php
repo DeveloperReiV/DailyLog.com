@@ -131,4 +131,14 @@ class Model
     {
         return isset($this->id) ? $this->update() : $this->insert();
     }
+
+    public static function search($str)
+    {
+        $db = new DataBase();
+        $db->setClassName(get_called_class());
+
+        $sql = "SELECT * FROM " . static::$table . " WHERE concat(header,crt_date,description) LIKE '%$str%'";
+
+        return $db->query($sql);
+    }
 }

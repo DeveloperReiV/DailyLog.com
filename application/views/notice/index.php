@@ -16,8 +16,8 @@
     <div class="col-sm-12">
         <div class="panel panel-default opacity">
             <div class="panel-body">
-
                 <ul class="nav nav-tabs">
+
                     <?php foreach($category as $key => $cat): ?>
                         <li <?php if($key=='1') echo 'class="active"'?>><a data-toggle="tab" href="#panel<?=$key?>"><?=$cat?></a></li>
                     <?php endforeach; ?>
@@ -39,13 +39,13 @@
                                     <thead>
                                     <?php if(isset($notices[$key])): ?>
                                         <tr class="info table-head">
-                                            <td>№</td>
-                                            <td>Заметка</td>
-                                            <td>Описание</td>
-                                            <td>Дата</td>
-                                            <td>Время</td>
-                                            <td>Статус</td>
-                                            <td></td>
+                                            <td width="2%">№</td>
+                                            <td width="8%">Заметка</td>
+                                            <td width="50%">Описание</td>
+                                            <td width="5%">Дата</td>
+                                            <td width="2%">Время</td>
+                                            <td width="2%">Статус</td>
+                                            <td width="2%"></td>
 
                                         </tr>
                                     <?php else: ?>

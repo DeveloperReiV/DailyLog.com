@@ -12,8 +12,17 @@ class NoticeController extends Controller
     {
         $view           = new View();
         $view->category = getAllCategory();                         //получаем список всех категорий
-        $notices        = Notice::findAll();                        //получаем все заметки из базы данных
-        $view->notices  = Notice::sortNoticeOnCategory($notices);   //сортируем заметки по категориям
+
+        if(!empty($_POST['search_text']))
+        {
+            $notices = Notice::search($_POST['search_text']);
+            $view->notices  = Notice::sortNoticeOnCategory($notices);
+        }
+        else
+        {
+            $notices       = Notice::findAll();                        //получаем все заметки из базы данных
+            $view->notices = Notice::sortNoticeOnCategory($notices);   //сортируем заметки по категориям
+        }
 
         $view->display('notice\index.php');
     }
@@ -101,4 +110,16 @@ class NoticeController extends Controller
         }
         $view->display('notice\view.php');
     }
+
+    /*public function action_search()
+    {
+        $view = new View();
+        $view->category = getAllCategory();                         //получаем список всех категорий
+        if($_GET['txt'])
+        {
+            $notices = Notice::search($_GET['txt']);
+            $view->notices  = Notice::sortNoticeOnCategory($notices);
+        }
+        $view->display('notice\index.php');
+    }*/
 }

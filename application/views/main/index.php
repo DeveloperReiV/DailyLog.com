@@ -1,6 +1,6 @@
 <title>Главная</title>
 
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="myCarousel" class="carousel slide" data-ride="carousel" style="opacity: 0.8">
 
     <?php  if(!empty($imp_notes)):?>
 

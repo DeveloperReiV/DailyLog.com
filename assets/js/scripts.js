@@ -41,3 +41,26 @@ function clock()
 	}
 	setTimeout("clock()", 1000);
 }
+
+
+//function searchNotice()
+//{
+//	var txt = $('#search_text').val();
+//
+//	$.ajax({
+//		url: 'notice',
+//		data : {
+//			txt : txt
+//		},
+//		type : 'GET',
+//		success: function(res){
+//			if(!res)
+//			{
+//				alert('Ничего не надено!');
+//			}
+//		},
+//		error: function(){
+//			alert("Ошибка!");
+//		}
+//	});
+//}

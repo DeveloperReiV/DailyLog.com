@@ -8,6 +8,11 @@ class MyFile
 
     public static function uploadFile($file, $filepath)
     {
+        if(!file_exists(UPLOAD_DIR . $filepath))
+        {
+            mkdir(UPLOAD_DIR . $filepath);
+        }
+
         // Проверяем загружен ли файл
         if(is_uploaded_file($file["tmp_name"]))
         {

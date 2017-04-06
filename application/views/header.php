@@ -10,7 +10,7 @@
 </head>
 
 <?php if(!empty($_COOKIE['backIMG'])):?>
-<body style="background: url(<?=SITE_HOST . '/application/upload/background/' . $_COOKIE['backIMG']?>)">
+<body style="background: url(<?=SITE_HOST . '/application/upload/background/' . $_COOKIE['backIMG']?>); background-size: 100%">
 <?php else: ?>
 <body>
 <?php endif; ?>
@@ -32,13 +32,12 @@
                     <li onclick="getActionMenu(this)"><a href="/">Главная</a></li>
                     <li onclick="getActionMenu(this)"><a href="/notice">Заметки</a></li>
                     <li onclick="getActionMenu(this)"><a href="/teldir">Телефонная книга</a></li>
-                    <li onclick="getActionMenu(this)"><a href="#">Личный кабинет</a></li>
                     <li onclick="getActionMenu(this)"><a href="/setting">Настройки</a></li>
                 </ul>
 
-                <form class="navbar-form navbar-right" role="search">
+                <form class="navbar-form navbar-right" action="notice" role="search" method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Строка поиска">
+                        <input type="text" name="search_text" class="form-control" placeholder="Строка поиска">
                         <span class="input-group-btn">
                              <button type="submit" class="btn btn-default">Найти</button>
                         </span>
