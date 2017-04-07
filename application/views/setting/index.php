@@ -24,19 +24,21 @@
             </div>
 
             <div class="col-xs-9">
-            <?php foreach($images as $img): ?>
-                <div class="col-sm-5 col-md-3">
-                    <div class="thumbnail">
-                        <div class="caption" style="text-align: center;">
-                            <img src="<?=SITE_HOST . '/application/upload/background/' . $img?>" alt="" width="200px" height="150px"/>
-                            <div class="btn-group">
-                                <a href="/setting/setback/?n=<?=$img?>" title="Выбрать"><span class="glyphicon glyphicon-ok"></a></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="/setting/delete/?n=<?=$img?>" title="Удалить"><span class="glyphicon glyphicon-remove"></a></span>
+            <?php if(!empty($images)): ?>
+                <?php foreach($images as $img): ?>
+                    <div class="col-sm-5 col-md-3">
+                        <div class="thumbnail">
+                            <div class="caption" style="text-align: center;">
+                                <img src="<?=SITE_HOST . '/application/upload/background/' . $img?>" alt="" width="200px" height="150px"/>
+                                <div class="btn-group">
+                                    <a href="/setting/setback/?n=<?=$img?>" title="Выбрать"><span class="glyphicon glyphicon-ok"></a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="/setting/delete/?n=<?=$img?>" title="Удалить"><span class="glyphicon glyphicon-remove"></a></span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
             </div>
 
         </div>

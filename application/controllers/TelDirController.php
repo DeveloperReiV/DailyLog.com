@@ -23,7 +23,7 @@ class TelDirController extends Controller
 
     public function action_delete()
     {
-        $id = $_GET['id'];
+        $id = cleanInput($_GET['id']);
 
         if($id)
         {
@@ -47,7 +47,7 @@ class TelDirController extends Controller
         {
             if(!empty($_GET['id']))
             {
-                $teldir->id = $_GET['id'];
+                $teldir->id = cleanInput($_GET['id']);
                 $st = 'обновлен';
             }
             else
@@ -57,28 +57,27 @@ class TelDirController extends Controller
 
             if(!empty($_POST['owner']) && !empty($_POST['phone']))
             {
-                $teldir->owner = $_POST['owner'];
-                $teldir->phone = $_POST['phone'];
+                $teldir->owner = cleanInput($_POST['owner']);
+                $teldir->phone = cleanInput($_POST['phone']);
 
                 if($teldir->save())
                 {
                     $_SESSION['success'] = "Телефон успешно $st!!!";
-                    $view->form          = true;
+                    header('location: /teldir');
                 }
             }
             else
             {
                 $_SESSION['warning'] = 'Поля отмеченные * заполнять обязательно!!!';
+                $view->category = getAllCategory();                         //получаем список всех категорий
+                $view->display('teldir\add.php');
             }
         }
-
-        $view->category = getAllCategory();                         //получаем список всех категорий
-        $view->display('teldir\add.php');
     }
 
     public function action_edit()
     {
-        $id = $_GET['id'];
+        $id = cleanInput($_GET['id']);
 
         if($id)
         {

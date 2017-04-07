@@ -45,8 +45,11 @@ function getTimeFromTimestamp($timestamp)
  * @param $mes
  */
 function showWarning($mes)
-{
-    echo "<div class='alert alert-danger'>$mes</div>";
+{   echo "<div class='row'>";
+    echo "<div class='col-sm-4'>";
+    echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>$mes</div>";
+    echo "</div>";
+    echo "</div>";
     unset($_SESSION['warning']);
 }
 
@@ -57,7 +60,11 @@ function showWarning($mes)
  */
 function showSuccess($mes)
 {
-    echo "<div class='alert alert-success'>$mes</div>";
+    echo "<div class='row'>";
+    echo "<div class='col-sm-4'>";
+    echo "<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>$mes</div>";
+    echo "</div>";
+    echo "</div>";
     unset($_SESSION['success']);
 }
 
@@ -75,4 +82,14 @@ function comparisonDate($date)
     $date        = date('Y-m-d', strtotime($date));
 
     return $date < $currentDate ? false : true;
+}
+
+function cleanInput($val)
+{
+    $val = trim($val);
+    $val = stripcslashes($val);
+    $val = strip_tags($val);
+    $val = htmlspecialchars($val);
+
+    return $val;
 }

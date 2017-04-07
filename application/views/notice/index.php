@@ -12,14 +12,19 @@
     </div>
 </div>
 
+<?php if(!empty($_SESSION['success']))showSuccess($_SESSION['success']); ?>
+
 <div class="row">
     <div class="col-sm-12">
         <div class="panel panel-default opacity">
             <div class="panel-body">
                 <ul class="nav nav-tabs">
-
+                    <?php $d = 1; ?>
                     <?php foreach($category as $key => $cat): ?>
-                        <li <?php if($key=='1') echo 'class="active"'?>><a data-toggle="tab" href="#panel<?=$key?>"><?=$cat?></a></li>
+                        <?php if(array_key_exists($key, $notices)): ?>
+                        <li <?php if($d == 1) echo 'class="active"'?>><a data-toggle="tab" href="#panel<?=$key?>"><?=$cat?></a></li>
+                        <?php endif; ?>
+                    <?php $d++; ?>
                     <?php endforeach; ?>
 
                     <div class="btn-group" style="float: right;">
@@ -31,6 +36,7 @@
                 <div class="tab-content">
 
                     <?php foreach($category as $key => $cat): ?>
+                        <?php if(array_key_exists($key, $notices)): ?>
                         <div id="panel<?=$key?>" class="tab-pane fade <?php if($key=='1') echo 'in active'?>">
                             <br>
                             <div class="table-responsive">
@@ -92,6 +98,7 @@
 
                             </div>
                         </div>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </div>
 

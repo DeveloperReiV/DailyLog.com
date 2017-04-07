@@ -29,7 +29,7 @@ class NoticeController extends Controller
 
     public function action_delete()
     {
-        $id = $_GET['id'];
+        $id = cleanInput($_GET['id']);
 
         if($id)
         {
@@ -54,7 +54,7 @@ class NoticeController extends Controller
         {
             if(!empty($_GET['id']))
             {
-                $notice->id = $_GET['id'];
+                $notice->id = cleanInput($_GET['id']);
                 $st = 'обновлена';
             }
             else
@@ -64,31 +64,31 @@ class NoticeController extends Controller
 
             if(!empty($_POST['header']) && !empty($_POST['date']) && !empty($_POST['category']))
             {
-                $notice->header      = $_POST['header'];
-                $notice->description = $_POST['description'];
-                $notice->date        = $_POST['date'] . ' ' . $_POST['time'] . ':' . '00';
-                $notice->importance  = $_POST['importance'];
-                $notice->category    = $_POST['category'];
+                $notice->header      = cleanInput($_POST['header']);
+                $notice->description = cleanInput($_POST['description']);
+                $notice->date        = cleanInput($_POST['date']) . ' ' . cleanInput($_POST['time']) . ':' . '00';
+                $notice->importance  = cleanInput($_POST['importance']);
+                $notice->category    = cleanInput($_POST['category']);
 
                 if($notice->save())
                 {
                     $_SESSION['success'] = "Заметка '{$notice->header}' успешно $st!!!";
-                    $view->form = true;
+                    header('location: /notice');
                 }
             }
             else
             {
                 $_SESSION['warning'] = 'Поля отмеченные * заполнять обязательно!!!';
+                $view->category = getAllCategory();                         //получаем список всех категорий
+                $view->display('notice\add.php');
             }
         }
 
-        $view->category = getAllCategory();                         //получаем список всех категорий
-        $view->display('notice\add.php');
     }
 
     public function action_edit()
     {
-        $id = $_GET['id'];
+        $id = cleanInput($_GET['id']);
 
         if($id)
         {
@@ -104,22 +104,10 @@ class NoticeController extends Controller
         $view = new View();
         if($_GET['id'])
         {
-            $id         = $_GET['id'];
+            $id         = cleanInput($_GET['id']);
             $view->note = Notice::findByColumn('id', $id)[0];
             $view->category = getAllCategory();                         //получаем список всех категорий
         }
         $view->display('notice\view.php');
     }
-
-    /*public function action_search()
-    {
-        $view = new View();
-        $view->category = getAllCategory();                         //получаем список всех категорий
-        if($_GET['txt'])
-        {
-            $notices = Notice::search($_GET['txt']);
-            $view->notices  = Notice::sortNoticeOnCategory($notices);
-        }
-        $view->display('notice\index.php');
-    }*/
 }

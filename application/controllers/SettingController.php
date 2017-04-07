@@ -12,7 +12,7 @@ class SettingController extends Controller
     public function action_index()
     {
         $view = new View();
-        $view->images = MyFile::getAllFiles('background');
+        $view->images = MyFile::getAllFiles(UPLOAD_DIR . 'background');
         $view->display('setting/index.php');
     }
 
@@ -20,7 +20,7 @@ class SettingController extends Controller
     {
         if($_FILES['file'])
         {
-           MyFile::uploadFile($_FILES['file'],'background\\');
+           MyFile::uploadFile($_FILES['file'],UPLOAD_DIR . 'background');
            header('location: \setting');
         }
     }
@@ -29,7 +29,7 @@ class SettingController extends Controller
     {
         if($_GET['n'])
         {
-            $path = UPLOAD_DIR . 'background\\' . $_GET['n'];
+            $path = UPLOAD_DIR . 'background\\' . cleanInput($_GET['n']);
             if(file_exists($path))
             {
                 MyFile::deleteImage($path);
@@ -42,7 +42,7 @@ class SettingController extends Controller
     {
         if($_GET['n'])
         {
-            $path = UPLOAD_DIR . 'background\\' . $_GET['n'];
+            $path = UPLOAD_DIR . 'background\\' . cleanInput($_GET['n']);
             if(file_exists($path))
             {
                 setcookie('backIMG', $_GET['n'], time()+60*60*24*360, '/', 'dailylog.com');

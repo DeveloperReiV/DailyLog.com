@@ -8,18 +8,6 @@
     <div class="panel-body">
         <?php if(!empty($_SESSION['warning'])) showWarning($_SESSION['warning']); ?>
 
-        <?php
-            if(!empty($_SESSION['success']))
-            {
-                echo '<div class="container" style="text-align: center;">';
-                    showSuccess($_SESSION['success']);
-                    echo '<a href="\notice"><h3><span class="label label-default">К заметкам</span></a>';
-                echo '</div>';
-            }
-        ?>
-
-
-        <?php if(empty($form)): ?>
             <?php if(empty($note)): ?>
 
                 <form action="/notice/insert" method="post">
@@ -119,7 +107,6 @@
                 </form>
 
             <?php endif; ?>
-        <?php endif; ?>
 
     </div>
 </div>

@@ -8,18 +8,6 @@
     <div class="panel-body">
         <?php if(!empty($_SESSION['warning'])) showWarning($_SESSION['warning']); ?>
 
-        <?php
-        if(!empty($_SESSION['success']))
-        {
-            echo '<div class="container" style="text-align: center;">';
-            showSuccess($_SESSION['success']);
-            echo '<a href="\teldir"><h3><span class="label label-default">К номерам</span></a>';
-            echo '</div>';
-        }
-        ?>
-
-        <?php if(empty($form)): ?>
-
             <?php if(empty($teldir)): ?>
                 <form action="/teldir/insert" method="post">
                     <div class="input-group">
@@ -58,6 +46,6 @@
                 </form>
 
             <?php endif; ?>
-        <?php  endif;?>
+
     </div>
 </div>

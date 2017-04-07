@@ -3,6 +3,7 @@
 <div class="row">
     <div class="col-sm-12">
 
+        <?php if(!empty($_SESSION['success']))showSuccess($_SESSION['success']); ?>
 
         <div class="panel panel-default opacity">
 

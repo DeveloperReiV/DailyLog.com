@@ -6,11 +6,19 @@ namespace app\lib;
 class MyFile
 {
 
+    /**
+     * Загрузить файл $file в папку $filepath
+     *
+     * @param $file
+     * @param $filepath
+     *
+     * @return bool
+     */
     public static function uploadFile($file, $filepath)
     {
-        if(!file_exists(UPLOAD_DIR . $filepath))
+        if(!file_exists($filepath))
         {
-            mkdir(UPLOAD_DIR . $filepath);
+            mkdir($filepath);
         }
 
         // Проверяем загружен ли файл
@@ -19,7 +27,7 @@ class MyFile
             $type     = explode('.', $file['name'])[1];
             $filename = uniqid() . '.' . $type;
             // Если файл загружен успешно, перемещаем его из временной директории в конечную
-            move_uploaded_file($file["tmp_name"], UPLOAD_DIR . $filepath . $filename);
+            move_uploaded_file($file["tmp_name"], $filepath . '\\' . $filename);
 
             return true;
         }
@@ -29,14 +37,28 @@ class MyFile
         }
     }
 
+    /**
+     * Получить список всех фалов в дирректории $dir
+     *
+     * @param $dir
+     *
+     * @return array
+     */
     public static function getAllFiles($dir)
     {
-        $images = scandir(UPLOAD_DIR . $dir, 1);
+        $images = scandir($dir, 1);
         unset($images[count($images)-1]);
         unset($images[count($images)-1]);
         return $images;
     }
 
+    /**
+     * Удалить файл
+     *
+     * @param $path
+     *
+     * @return bool
+     */
     public static function deleteImage($path)
     {
         return unlink($path);
