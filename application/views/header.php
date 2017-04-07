@@ -29,10 +29,10 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" id="menu">
-                    <li onclick="getActionMenu(this)"><a href="/">Главная</a></li>
-                    <li onclick="getActionMenu(this)"><a href="/notice">Заметки</a></li>
-                    <li onclick="getActionMenu(this)"><a href="/teldir">Телефонная книга</a></li>
-                    <li onclick="getActionMenu(this)"><a href="/setting">Настройки</a></li>
+                    <li id="m1"><a href="/">Главная</a></li>
+                    <li id="m2"><a href="/notice">Заметки</a></li>
+                    <li id="m3"><a href="/teldir">Телефонная книга</a></li>
+                    <li id="m4"><a href="/setting">Настройки</a></li>
                 </ul>
 
                 <form class="navbar-form navbar-right" action="notice" role="search" method="post">

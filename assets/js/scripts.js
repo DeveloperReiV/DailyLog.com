@@ -1,16 +1,49 @@
-function getActionMenu(item)
+/**
+ * Событие загрузки страницы
+ */
+window.onload = function(){
+	clock();
+
+	/*куки активного пункта меню*/
+	CookieMenu();
+	/****************************/
+
+	//clearCookie();
+};
+
+
+function clearCookie()
 {
-	if(item.className == "active")
-	{
-		item.className = "";
+	$.cookie("menuCookie", null);
+}
+
+/**
+ * Установка активного пункта меню
+ */
+function CookieMenu()
+{
+	$('#menu li').on('click', function() {
+		var list = [];
+		var item = $(this);
+		list.push(item.attr("id"));
+		$.cookie("menuCookie", list.join(','));
+		return;
+	});
+
+	if($.cookie("menuCookie") == null) {
+		return;
 	}
-	else
-	{
-		$('#menu li').removeClass('active');
-		item.className = "active";
+	var chMap = $.cookie("menuCookie").split(',');
+	for (var i in chMap){
+		$('#'+chMap[i]).prop("class", "active");
 	}
 }
 
+
+
+/**
+ * часы (дата и время) на странице
+ */
 function clock()
 {
 	var d = new Date();
@@ -41,26 +74,3 @@ function clock()
 	}
 	setTimeout("clock()", 1000);
 }
-
-
-//function searchNotice()
-//{
-//	var txt = $('#search_text').val();
-//
-//	$.ajax({
-//		url: 'notice',
-//		data : {
-//			txt : txt
-//		},
-//		type : 'GET',
-//		success: function(res){
-//			if(!res)
-//			{
-//				alert('Ничего не надено!');
-//			}
-//		},
-//		error: function(){
-//			alert("Ошибка!");
-//		}
-//	});
-//}
