@@ -3,6 +3,7 @@
 namespace app\core;
 
 use app\lib\DataBase;
+use app\models\Notice;
 
 class Model
 {
@@ -140,5 +141,58 @@ class Model
         $sql = "SELECT * FROM " . static::$table . " WHERE concat(header,crt_date,description) LIKE '%$str%'";
 
         return $db->query($sql);
+    }
+
+
+
+    /**
+     * Вернуть колличество записей из таблицы значение колонки $column в которых равно $value
+     *
+     * @param $column
+     * @param $value
+     *
+     * @return bool или object
+     */
+    public static function findCountItemByColumn($column, $value)
+    {
+        $db = new DataBase();
+        $sql = 'SELECT COUNT(*) FROM ' . static::$table . ' WHERE ' . $column . ' = :value';
+        $res = $db->query($sql, [':value' => $value]);
+
+        if(!empty($res))
+        {
+            foreach((array)$res[0] as $r)
+            {
+                return $r;
+            }
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Вазвращает записи для вывода на одну страницу
+     *
+     * @param $column
+     * @param $value
+     * @param $first
+     *
+     * @return bool|object
+     */
+    public static function findByColumnOnePages($column, $value, $first)
+    {
+        $db = new DataBase();
+        $db->setClassName(get_called_class());
+
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value LIMIT ' . $first . ',' . Notice::$note_on_page;
+        $res = $db->query($sql, [':value' => $value]);
+
+        if(!empty($res))
+        {
+            return $res;
+        }
+
+        return false;
     }
 }

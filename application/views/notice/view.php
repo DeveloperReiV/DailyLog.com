@@ -65,7 +65,7 @@
 
         </div>
 
-        <a href="/notice"><h3><span class="label label-default">К заметкам</span></h3></a>
+        <a href="/notice?cat=<?=$note->category?>"><h3><span class="label label-default">К заметкам</span></h3></a>
 
     </div>
 </div>

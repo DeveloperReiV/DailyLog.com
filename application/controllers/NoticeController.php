@@ -13,28 +13,29 @@ class NoticeController extends Controller
         $view           = new View();
         $view->category = getAllCategory();                         //получаем список всех категорий
 
-        if(!empty($_POST['search_text']))
-        {
-            $notices = Notice::search($_POST['search_text']);
-            $view->notices  = Notice::sortNoticeOnCategory($notices);
-        }
-        else
-        {
-            $notices       = Notice::findAll();                        //получаем все заметки из базы данных
-            $view->notices = Notice::sortNoticeOnCategory($notices);   //сортируем заметки по категориям
-        }
+        $view->ctg = !empty($_GET['cat']) ? cleanInput($_GET['cat']) : 1 ;
+        $view->p = !empty($_GET['p']) ? cleanInput($_GET['p']) : 1 ;
 
+        $count_note = Notice::findCountItemByColumn('category', $view->ctg);            //общее число записей
+        $view->count_page = round($count_note/Notice::$note_on_page);                        //число записей на странице
+        $first = $view->p * Notice::$note_on_page - Notice::$note_on_page;
+
+        $view->notices = Notice::findByColumnOnePages('category', $view->ctg,$first);
         $view->display('notice\index.php');
     }
 
     public function action_delete()
     {
         $id = cleanInput($_GET['id']);
+        $cat = cleanInput($_GET['cat']);
 
         if($id)
         {
             Notice::delete($id);
-            header('location: /notice');
+            if($cat)
+            {
+                header("location: /notice?cat=$cat");
+            }
         }
     }
 
@@ -49,6 +50,7 @@ class NoticeController extends Controller
     {
         $notice = new Notice();
         $view   = new View();
+        $view->category = getAllCategory();                         //получаем список всех категорий
 
         if($_POST)
         {
@@ -73,13 +75,12 @@ class NoticeController extends Controller
                 if($notice->save())
                 {
                     $_SESSION['success'] = "Заметка '{$notice->header}' успешно $st!!!";
-                    header('location: /notice');
+                    header("location: /notice?cat=$notice->category");
                 }
             }
             else
             {
                 $_SESSION['warning'] = 'Поля отмеченные * заполнять обязательно!!!';
-                $view->category = getAllCategory();                         //получаем список всех категорий
                 $view->display('notice\add.php');
             }
         }
