@@ -185,7 +185,7 @@ class Model
         $db = new DataBase();
         $db->setClassName(get_called_class());
 
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value LIMIT ' . $first . ',' . Notice::$note_on_page;
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value ORDER BY id DESC LIMIT ' . $first . ',' . Notice::$note_on_page;
         $res = $db->query($sql, [':value' => $value]);
 
         if(!empty($res))
