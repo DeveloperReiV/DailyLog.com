@@ -17,6 +17,9 @@
                         <div class="caption" style="text-align: center;">
                             <h5>Выбрана в качестве фона</h5>
                             <img src="<?=SITE_HOST . '/application/upload/background/' . $_COOKIE['backIMG']?>?>" alt="" width="200px" height="150px"/>
+                            <div class="row">
+                                <a href="/setting/deleteback" title="Удалить фон"><span class="glyphicon glyphicon-remove"></a></span>
+                            </div>
                         </div>
                     </div>
                     <?php endif; ?>
@@ -30,9 +33,11 @@
                         <div class="thumbnail">
                             <div class="caption" style="text-align: center;">
                                 <img src="<?=SITE_HOST . '/application/upload/background/' . $img?>" alt="" width="200px" height="150px"/>
-                                <div class="btn-group">
-                                    <a href="/setting/setback/?n=<?=$img?>" title="Выбрать"><span class="glyphicon glyphicon-ok"></a></span>&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="/setting/delete/?n=<?=$img?>" title="Удалить"><span class="glyphicon glyphicon-remove"></a></span>
+                                <div class="row">
+                                    <div class="btn-group">
+                                        <a href="/setting/setback/?n=<?=$img?>" title="Выбрать"><span class="glyphicon glyphicon-ok"></a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <a href="/setting/delete/?n=<?=$img?>" title="Удалить"><span class="glyphicon glyphicon-remove"></a></span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
