@@ -20,7 +20,7 @@ class NoticeController extends Controller
             $view->p   = !empty($_GET['p']) ? cleanInput($_GET['p']) : 1;
 
             $count_note       = Notice::getCountItem('category', $view->ctg);            //общее число записей
-            $view->count_page = round($count_note / Notice::$item_on_page);                  //число страниц
+            $view->count_page = ceil($count_note / Notice::$item_on_page);                  //число страниц
             $first            = $view->p * Notice::$item_on_page - Notice::$item_on_page;
 
             $view->notices = Notice::findByColumnOnePages('category', $view->ctg, $first);

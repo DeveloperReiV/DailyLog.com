@@ -14,7 +14,6 @@
 <?php else: ?>
 <body>
 <?php endif; ?>
-
 <div class="container-fluid">
     <nav class="navbar navbar-default" role="navigation">
             <div class="navbar-header">
@@ -29,10 +28,10 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav" id="menu">
-                    <li id="m1"><a href="/">Главная</a></li>
-                    <li id="m2"><a href="/notice">Заметки</a></li>
-                    <li id="m3"><a href="/teldir">Телефонная книга</a></li>
-                    <li id="m4"><a href="/setting">Настройки</a></li>
+                    <li id="m1" <?php if(getNameController() == '') echo "class='active'" ?>><a href="/">Главная</a></li>
+                    <li id="m2" <?php if(getNameController() == 'notice') echo "class='active'" ?>><a href="/notice">Заметки</a></li>
+                    <li id="m3" <?php if(getNameController() == 'teldir') echo "class='active'" ?>><a href="/teldir">Телефонная книга</a></li>
+                    <li id="m4" <?php if(getNameController() == 'setting') echo "class='active'" ?>><a href="/setting">Настройки</a></li>
                 </ul>
 
                 <form class="navbar-form navbar-right" action="notice" role="search" method="post">

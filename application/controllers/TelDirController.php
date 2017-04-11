@@ -19,7 +19,7 @@ class TelDirController extends Controller
         $view             = new View();
         $view->p          = !empty($_GET['p']) ? cleanInput($_GET['p']) : 1;
         $count_phone      = TelDir::getCountItem();            //общее число записей
-        $view->count_page = round($count_phone / TelDir::$item_on_page);                  //число страниц
+        $view->count_page = ceil($count_phone / TelDir::$item_on_page);                  //число страниц
         $first            = $view->p * TelDir::$item_on_page - TelDir::$item_on_page;
 
         $view->teldir = TelDir::findAll($first);

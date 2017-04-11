@@ -93,3 +93,10 @@ function cleanInput($val)
 
     return $val;
 }
+
+function getNameController()
+{
+    $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+    $path = explode( '/', $path );
+    return $path[1];
+}
