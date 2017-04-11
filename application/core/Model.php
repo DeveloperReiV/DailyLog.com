@@ -8,6 +8,7 @@ use app\models\Notice;
 class Model
 {
     protected static $table;
+    protected static $item_on_page;
     protected        $data = [];
 
     public function __get($key)
@@ -26,16 +27,19 @@ class Model
     }
 
     /**
-     * Вернуть все записи из таблицы
+     * Вернуть записи из таблицы начиная с $first.
+     * Возвращает колличество записей для отображения на одной странице
+     *
+     * @param $first
      *
      * @return object
      */
-    public static function findAll()
+    public static function findAll($first)
     {
         $db = new DataBase();
         $db->setClassName(get_called_class());
 
-        $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC';
+        $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $first . ',' . static::$item_on_page;
 
         return $db->query($sql);
     }
@@ -133,6 +137,13 @@ class Model
         return isset($this->id) ? $this->update() : $this->insert();
     }
 
+    /**
+     * Поиск по таблице
+     *
+     * @param $str
+     *
+     * @return object
+     */
     public static function search($str)
     {
         $db = new DataBase();
@@ -143,8 +154,6 @@ class Model
         return $db->query($sql);
     }
 
-
-
     /**
      * Вернуть колличество записей из таблицы значение колонки $column в которых равно $value
      *
@@ -153,10 +162,17 @@ class Model
      *
      * @return bool или object
      */
-    public static function findCountItemByColumn($column, $value)
+    public static function getCountItem($column = null, $value = null)
     {
         $db = new DataBase();
-        $sql = 'SELECT COUNT(*) FROM ' . static::$table . ' WHERE ' . $column . ' = :value';
+        if($column != null && $value != null)
+        {
+            $sql = 'SELECT COUNT(*) FROM ' . static::$table . ' WHERE ' . $column . ' = :value';
+        }
+        else
+        {
+            $sql = 'SELECT COUNT(*) FROM ' . static::$table;
+        }
         $res = $db->query($sql, [':value' => $value]);
 
         if(!empty($res))
@@ -172,11 +188,11 @@ class Model
 
 
     /**
-     * Вазвращает записи для вывода на одну страницу
+     * Вазвращает записи для вывода на одну страницу в которых $colum=value
      *
-     * @param $column
-     * @param $value
-     * @param $first
+     * @param $column - колонка
+     * @param $value - значение в колонке
+     * @param $first - номер записи с которой необходимо вернуть данные
      *
      * @return bool|object
      */
@@ -185,7 +201,7 @@ class Model
         $db = new DataBase();
         $db->setClassName(get_called_class());
 
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value ORDER BY id DESC LIMIT ' . $first . ',' . Notice::$note_on_page;
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value ORDER BY id DESC LIMIT ' . $first . ',' . static::$item_on_page;
         $res = $db->query($sql, [':value' => $value]);
 
         if(!empty($res))

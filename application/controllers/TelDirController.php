@@ -16,8 +16,13 @@ class TelDirController extends Controller
 {
     public function action_index()
     {
-        $view         = new View();
-        $view->teldir = TelDir::findAll();
+        $view             = new View();
+        $view->p          = !empty($_GET['p']) ? cleanInput($_GET['p']) : 1;
+        $count_phone      = TelDir::getCountItem();            //общее число записей
+        $view->count_page = round($count_phone / TelDir::$item_on_page);                  //число страниц
+        $first            = $view->p * TelDir::$item_on_page - TelDir::$item_on_page;
+
+        $view->teldir = TelDir::findAll($first);
         $view->display('teldir\index.php');
     }
 
@@ -48,7 +53,7 @@ class TelDirController extends Controller
             if(!empty($_GET['id']))
             {
                 $teldir->id = cleanInput($_GET['id']);
-                $st = 'обновлен';
+                $st         = 'обновлен';
             }
             else
             {
@@ -69,7 +74,7 @@ class TelDirController extends Controller
             else
             {
                 $_SESSION['warning'] = 'Поля отмеченные * заполнять обязательно!!!';
-                $view->category = getAllCategory();                         //получаем список всех категорий
+                $view->category      = getAllCategory();                         //получаем список всех категорий
                 $view->display('teldir\add.php');
             }
         }

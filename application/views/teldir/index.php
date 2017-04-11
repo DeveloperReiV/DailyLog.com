@@ -17,7 +17,6 @@
                     <thead>
                     <?php if(!empty($teldir)): ?>
                         <tr class="info table-head">
-                            <td>№</td>
                             <td>Владелец</td>
                             <td>Телефон</td>
                             <td></td>
@@ -31,10 +30,8 @@
 
                     <tbody>
                     <?php if(!empty($teldir)): ?>
-                        <?php $cnt = 1; ?>
                         <?php foreach($teldir as $item): ?>
                             <tr>
-                                <td><?=$cnt?></td>
                                 <td><?=$item->owner?></td>
                                 <td><?=$item->phone?></td>
                                 <td class="title-panel-imp-note" width="5%">
@@ -42,12 +39,21 @@
                                     <a href="/teldir/delete?id=<?=$item->id?>" title="Удалить"><span class="glyphicon glyphicon-remove"></a></span>
                                 </td>
                             </tr>
-                            <?php $cnt++; ?>
                         <?php endforeach; ?>
                     <?php endif; ?>
                     </tbody>
 
                 </table>
+
+                <?php if(!empty($teldir) && $count_page>1): ?>
+                    <ul class="pagination">
+                        <li><a href="teldir?p=1">&laquo;</a></li>
+                        <?php for($i = 1; $i<=$count_page; $i++): ?>
+                            <li <?php if($i == $p || empty($p)) echo 'class="active"' ?>><a href="teldir?p=<?=$i?>"><?=$i?></a></li>
+                        <?php endfor; ?>
+                        <li><a href="teldir?p=<?=$count_page?>">&raquo;</a></li>
+                    </ul>
+                <?php endif; ?>
 
             </div>
         </div>

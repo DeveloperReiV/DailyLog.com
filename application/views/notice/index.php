@@ -1,8 +1,9 @@
-<title>Заметки | <?=$category[$ctg]?></title>
+<title>Заметки <?if(!empty($ctg)) echo '  |  ' . $category[$ctg];?></title>
 
 <div class="row">
     <div class="col-sm-12">
-        <div class="panel panel-default opacity">
+        <?php if(!isset($notes_search)): ?>
+            <div class="panel panel-default opacity">
             <div class="panel-heading">
                 <div class="row">
 
@@ -98,5 +99,68 @@
                 </div>
             </div>
         </div>
+        <?php else: ?>
+            <div class="panel panel-default opacity">
+                <div class="panel-heading">
+                    <h4 class="title-panel-imp-note">Результат поиска по запросу '<?=$str_srh?>'</h4>
+                </div>
+
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+
+                            <thead>
+                            <?php if(!empty($notes_search)): ?>
+                                <tr class="info table-head">
+                                    <td width="10%">Категория</td>
+                                    <td width="10%">Заметка</td>
+                                    <td width="50%">Описание</td>
+                                    <td width="5%">Дата</td>
+                                    <td width="2%">Время</td>
+                                    <td width="2%">Статус</td>
+                                    <td width="2%"></td>
+                                </tr>
+                            <?php else: ?>
+                                <tr class="warning table-head">
+                                    <td>Поиск не дал результатов</td>
+                                </tr>
+                            <?php endif; ?>
+                            </thead>
+
+                            <tbody>
+                            <?php if(!empty($notes_search)): ?>
+                                <?php foreach($notes_search as $note): ?>
+                                    <tr>
+                                        <td><?=$category[$note->category] ?></td>
+                                        <?php  if(comparisonDate($note->date)):?>
+                                            <td><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></td>
+                                        <?php  else: ?>
+                                            <td class="danger"><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></td>
+                                        <?php  endif;?>
+
+                                        <td><?=$note->description?></td>
+                                        <td><?=getDateFromTimestamp($note->date)?></td>
+                                        <td><?=getTimeFromTimestamp($note->date)?></td>
+
+                                        <?php if($note->importance == 1): ?>
+                                            <td class="success"></td>
+                                        <?php else: ?>
+                                            <td class="warning"></td>
+                                        <?php endif; ?>
+
+                                        <td class="title-panel-imp-note" width="5%">
+                                            <a href="/notice/edit?id=<?=$note->id?>" title="Редактировать заметку '<?=$note->header?>'"><span class="glyphicon glyphicon-pencil"></a></span>
+                                            <a href="/notice/delete?id=<?=$note->id?>&cat=<?=$note->category?>" title="Удалить заметку '<?=$note->header?>'"><span class="glyphicon glyphicon-remove"></a></span>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            </tbody>
+                        </table>
+                        <a href="/notice"><h3><span class="label label-default">К заметкам</span></h3></a>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </div>
