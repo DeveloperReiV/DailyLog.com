@@ -3,10 +3,12 @@
 namespace app\core;
 
 use app\lib\DataBase;
+use app\models\Notice;
 
 class Model
 {
     protected static $table;
+    protected static $item_on_page;
     protected        $data = [];
 
     public function __get($key)
@@ -25,16 +27,19 @@ class Model
     }
 
     /**
-     * Вернуть все записи из таблицы
+     * Вернуть записи из таблицы начиная с $first.
+     * Возвращает колличество записей для отображения на одной странице
+     *
+     * @param $first
      *
      * @return object
      */
-    public static function findAll()
+    public static function findAll($first)
     {
         $db = new DataBase();
         $db->setClassName(get_called_class());
 
-        $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC';
+        $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $first . ',' . static::$item_on_page;
 
         return $db->query($sql);
     }
@@ -132,6 +137,13 @@ class Model
         return isset($this->id) ? $this->update() : $this->insert();
     }
 
+    /**
+     * Поиск по таблице
+     *
+     * @param $str
+     *
+     * @return object
+     */
     public static function search($str)
     {
         $db = new DataBase();
@@ -140,5 +152,63 @@ class Model
         $sql = "SELECT * FROM " . static::$table . " WHERE concat(header,crt_date,description) LIKE '%$str%'";
 
         return $db->query($sql);
+    }
+
+    /**
+     * Вернуть колличество записей из таблицы значение колонки $column в которых равно $value
+     *
+     * @param $column
+     * @param $value
+     *
+     * @return bool или object
+     */
+    public static function getCountItem($column = null, $value = null)
+    {
+        $db = new DataBase();
+        if($column != null && $value != null)
+        {
+            $sql = 'SELECT COUNT(*) FROM ' . static::$table . ' WHERE ' . $column . ' = :value';
+        }
+        else
+        {
+            $sql = 'SELECT COUNT(*) FROM ' . static::$table;
+        }
+        $res = $db->query($sql, [':value' => $value]);
+
+        if(!empty($res))
+        {
+            foreach((array)$res[0] as $r)
+            {
+                return $r;
+            }
+        }
+
+        return false;
+    }
+
+
+    /**
+     * Вазвращает записи для вывода на одну страницу в которых $colum=value
+     *
+     * @param $column - колонка
+     * @param $value - значение в колонке
+     * @param $first - номер записи с которой необходимо вернуть данные
+     *
+     * @return bool|object
+     */
+    public static function findByColumnOnePages($column, $value, $first)
+    {
+        $db = new DataBase();
+        $db->setClassName(get_called_class());
+
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value ORDER BY id DESC LIMIT ' . $first . ',' . static::$item_on_page;
+        $res = $db->query($sql, [':value' => $value]);
+
+        if(!empty($res))
+        {
+            return $res;
+        }
+
+        return false;
     }
 }

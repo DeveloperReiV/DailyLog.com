@@ -5,7 +5,7 @@ window.onload = function(){
 	clock();
 
 	/*куки активного пункта меню*/
-	CookieMenu();
+	//CookieMenu();
 	/****************************/
 
 	//clearCookie();
@@ -20,7 +20,7 @@ function clearCookie()
 /**
  * Установка активного пункта меню
  */
-function CookieMenu()
+/*function CookieMenu()
 {
 	$('#menu li').on('click', function() {
 		var list = [];
@@ -37,8 +37,7 @@ function CookieMenu()
 	for (var i in chMap){
 		$('#'+chMap[i]).prop("class", "active");
 	}
-}
-
+}*/
 
 
 /**

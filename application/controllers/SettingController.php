@@ -38,7 +38,7 @@ class SettingController extends Controller
         header('location: \setting');
     }
 
-    public static function action_setback()
+    public function action_setback()
     {
         if($_GET['n'])
         {
@@ -48,6 +48,12 @@ class SettingController extends Controller
                 setcookie('backIMG', $_GET['n'], time()+60*60*24*360, '/', 'dailylog.com');
             }
         }
+        header('location: \setting');
+    }
+
+    public  function action_deleteback()
+    {
+        setcookie ('backIMG', null, time()-60*60*24*360, '/', 'dailylog.com');
         header('location: \setting');
     }
 }

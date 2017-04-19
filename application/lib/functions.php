@@ -46,7 +46,7 @@ function getTimeFromTimestamp($timestamp)
  */
 function showWarning($mes)
 {   echo "<div class='row'>";
-    echo "<div class='col-sm-4'>";
+    echo "<div class='col-sm-6'>";
     echo "<div class='alert alert-danger alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>$mes</div>";
     echo "</div>";
     echo "</div>";
@@ -61,7 +61,7 @@ function showWarning($mes)
 function showSuccess($mes)
 {
     echo "<div class='row'>";
-    echo "<div class='col-sm-4'>";
+    echo "<div class='col-sm-6'>";
     echo "<div class='alert alert-success alert-dismissable'><button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>$mes</div>";
     echo "</div>";
     echo "</div>";
@@ -92,4 +92,11 @@ function cleanInput($val)
     $val = htmlspecialchars($val);
 
     return $val;
+}
+
+function getNameController()
+{
+    $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );
+    $path = explode( '/', $path );
+    return $path[1];
 }

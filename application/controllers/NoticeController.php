@@ -13,28 +13,42 @@ class NoticeController extends Controller
         $view           = new View();
         $view->category = getAllCategory();                         //получаем список всех категорий
 
-        if(!empty($_POST['search_text']))
+        if(empty($_POST['search_text']))
         {
-            $notices = Notice::search($_POST['search_text']);
-            $view->notices  = Notice::sortNoticeOnCategory($notices);
+
+            $view->ctg = !empty($_GET['cat']) ? cleanInput($_GET['cat']) : 1;
+            $view->p   = !empty($_GET['p']) ? cleanInput($_GET['p']) : 1;
+
+            $count_note       = Notice::getCountItem('category', $view->ctg);            //общее число записей
+            $view->count_page = ceil($count_note / Notice::$item_on_page);                  //число страниц
+            $first            = $view->p * Notice::$item_on_page - Notice::$item_on_page;
+
+            $view->notices = Notice::findByColumnOnePages('category', $view->ctg, $first);
         }
         else
         {
-            $notices       = Notice::findAll();                        //получаем все заметки из базы данных
-            $view->notices = Notice::sortNoticeOnCategory($notices);   //сортируем заметки по категориям
+            $view->str_srh = cleanInput($_POST['search_text']);
+            $view->notes_search = Notice::search($view->str_srh);
         }
-
         $view->display('notice\index.php');
     }
 
     public function action_delete()
     {
-        $id = cleanInput($_GET['id']);
+        $id  = cleanInput($_GET['id']);
+        $cat = cleanInput($_GET['cat']);
 
         if($id)
         {
             Notice::delete($id);
-            header('location: /notice');
+            if($cat)
+            {
+                header("location: /notice?cat=$cat");
+            }
+            else
+            {
+                header("location: /notice");
+            }
         }
     }
 
@@ -47,15 +61,16 @@ class NoticeController extends Controller
 
     public function action_insert()
     {
-        $notice = new Notice();
-        $view   = new View();
+        $notice         = new Notice();
+        $view           = new View();
+        $view->category = getAllCategory();                         //получаем список всех категорий
 
         if($_POST)
         {
             if(!empty($_GET['id']))
             {
                 $notice->id = cleanInput($_GET['id']);
-                $st = 'обновлена';
+                $st         = 'обновлена';
             }
             else
             {
@@ -73,13 +88,12 @@ class NoticeController extends Controller
                 if($notice->save())
                 {
                     $_SESSION['success'] = "Заметка '{$notice->header}' успешно $st!!!";
-                    header('location: /notice');
+                    header("location: /notice?cat=$notice->category");
                 }
             }
             else
             {
                 $_SESSION['warning'] = 'Поля отмеченные * заполнять обязательно!!!';
-                $view->category = getAllCategory();                         //получаем список всех категорий
                 $view->display('notice\add.php');
             }
         }
@@ -104,8 +118,8 @@ class NoticeController extends Controller
         $view = new View();
         if($_GET['id'])
         {
-            $id         = cleanInput($_GET['id']);
-            $view->note = Notice::findByColumn('id', $id)[0];
+            $id             = cleanInput($_GET['id']);
+            $view->note     = Notice::findByColumn('id', $id)[0];
             $view->category = getAllCategory();                         //получаем список всех категорий
         }
         $view->display('notice\view.php');
