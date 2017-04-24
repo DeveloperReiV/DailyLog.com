@@ -31,9 +31,11 @@
                     <li id="m1" <?php if(getNameController() == '') echo "class='active'" ?>><a href="/">Главная</a></li>
                     <li id="m2" <?php if(getNameController() == 'notice') echo "class='active'" ?>><a href="/notice">Заметки</a></li>
                     <li id="m3" <?php if(getNameController() == 'teldir') echo "class='active'" ?>><a href="/teldir">Телефонная книга</a></li>
+                    <li id="m4" <?php if(getNameController() == 'user') echo "class='active'" ?>><a href="/user">Личные данные</a></li>
                     <li id="m4" <?php if(getNameController() == 'setting') echo "class='active'" ?>><a href="/setting">Настройки</a></li>
                 </ul>
 
+                <?php if(!empty($_SESSION['user'])): ?>
                 <form class="navbar-form navbar-right" action="notice" role="search" method="post">
                     <div class="input-group">
                         <input type="text" name="search_text" class="form-control" placeholder="Строка поиска">
@@ -42,13 +44,22 @@
                         </span>
                     </div>
                 </form>
+                <?php endif; ?>
 
-                <ul class="navbar-form navbar-right">
-                    <h3 style="margin: 0;"><span id="doc_time"></span></h3>
-                </ul>
+
 
             </div>
     </nav>
+
+    <?php if(!empty($_SESSION['user'])): ?>
+    <div class="panel panel-default opacity">
+        <div class="panel-heading">
+            <h4><b>
+                    <span id="doc_time"></span>
+                    <span style="float: right;">Привет, Пушистик!!!&nbsp;&nbsp;&nbsp;   <a href="user/exit">выход</a></span>
+            </b></h4>
+        </div>
+    </div>
+    <?php endif; ?>
+
 </div>
-
-

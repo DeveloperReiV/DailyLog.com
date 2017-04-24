@@ -13,7 +13,7 @@ class DataBase
      * @var \PDO - хранить экземпляр класса PDO для работы с базой данных
      * @access private
      */
-    private $dbh;
+    public $dbh;
 
     /**
      * @var string - хранит имя класса для возвращаемого объекта класса при работе с базой данных
@@ -50,6 +50,7 @@ class DataBase
     {
         $stmt = $this->dbh->prepare( $statement );          //подготавливаем запрос
         $stmt->execute( $params );                          //выполняем запрос с подстановкой параметров
+
         return $stmt->fetchAll( \PDO::FETCH_CLASS, $this->className );
     }
 

@@ -38,6 +38,33 @@ class MyFile
     }
 
     /**
+     * Загрузить файлы $masfiles в папку $path
+     *
+     * @param $masfiles
+     * @param $path
+     */
+    public static function uploadFiles($masfiles, $path)
+    {
+        if(!file_exists($path))
+        {
+            mkdir($path);
+        }
+        $file_count = count($masfiles['name']);
+
+        for($i = 0; $i < $file_count; $i++)
+        {
+            // Проверяем загружен ли файл
+            if(is_uploaded_file($masfiles["tmp_name"][$i]))
+            {
+                $type     = explode('.', $masfiles['name'][$i])[1];
+                $filename = uniqid() . '.' . $type;
+                // Если файл загружен успешно, перемещаем его из временной директории в конечную
+                move_uploaded_file($masfiles["tmp_name"][$i], $path . '\\' . $filename);
+            }
+        }
+    }
+
+    /**
      * Получить список всех фалов в дирректории $dir
      *
      * @param $dir

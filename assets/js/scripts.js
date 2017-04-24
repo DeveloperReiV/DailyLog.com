@@ -60,7 +60,7 @@ function clock()
 	if (seconds <= 9) seconds = "0" + seconds;
 	if (month_num <= 9) month_num = "0" + month_num;
 
-	date_time = day + "." + month_num + "." + d.getFullYear() + '   ' + hours + ":" + minutes + ":" + seconds;
+	date_time = 'дата(' + day + "." + month_num + "." + d.getFullYear() + ')   время(' + hours + ":" + minutes + ":" + seconds + ')';
 
 	if (document.layers)
 	{

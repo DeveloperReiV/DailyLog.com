@@ -10,6 +10,7 @@ class Model
     protected static $table;
     protected static $item_on_page;
     protected        $data = [];
+    public $insert_id = 0;
 
     public function __get($key)
     {
@@ -34,12 +35,20 @@ class Model
      *
      * @return object
      */
-    public static function findAll($first)
+    public static function findAll($first = 0)
     {
         $db = new DataBase();
         $db->setClassName(get_called_class());
+        $sql = "";
 
-        $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $first . ',' . static::$item_on_page;
+        if(!empty($first))
+        {
+            $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC LIMIT ' . $first . ',' . static::$item_on_page;
+        }
+        else
+        {
+            $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC';
+        }
 
         return $db->query($sql);
     }
@@ -101,6 +110,7 @@ class Model
         }
         $sql    = 'INSERT INTO ' . static::$table . ' (' . implode(', ', $cols) . ') VALUES (' . implode(', ', $colsPrepare) . ') ';
         $result = $db->execute($sql, $dataExec);
+        $this->insert_id = $db->dbh->lastInsertId();
 
         return $result;
     }

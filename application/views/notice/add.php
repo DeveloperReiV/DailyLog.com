@@ -9,8 +9,8 @@
         <?php if(!empty($_SESSION['warning'])) showWarning($_SESSION['warning']); ?>
 
             <?php if(empty($note)): ?>
-
-                <form action="/notice/insert" method="post">
+                <!-- форма добавления заметки-->
+                <form action="/notice/insert" method="post" enctype="multipart/form-data">
                 <div class="input-group" style="width: 20%;">
                     <span class="input-group-addon">Категория *</span>
                     <select class="form-control" name="category">
@@ -47,6 +47,12 @@
                         <option value="1" class="alert alert-success well-sm status">Важно</option>
                     </select>
                 </div>
+                <br>
+<!--                <div class="input-group" style="width: 30%;">-->
+<!--                    <span class="input-group-addon">Изображения</span>-->
+<!--                    <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />-->
+<!--                    <input type="file" name="images[]" class="form-control" multiple="true"/>-->
+<!--                </div>-->
                 <br><br>
                 <div class="btn-group">
                     <input type="submit" class="btn btn-default" value="Добавить">
@@ -55,7 +61,7 @@
             </form>
 
             <?php else: ?>
-
+                <!-- форма изменения заметки-->
                 <form action="/notice/insert?id=<?=$note->id?>" method="post">
                     <div class="input-group" style="width: 20%;">
                         <span class="input-group-addon">Категория *</span>
@@ -99,6 +105,12 @@
                             <option <?php if($note->importance == '1') echo 'selected'?> value="1" class="alert alert-success well-sm status">Важно</option>
                         </select>
                     </div>
+                    <br>
+<!--                    <div class="input-group" style="width: 30%;">-->
+<!--                        <span class="input-group-addon">Изображения</span>-->
+<!--                        <input type="hidden" name="MAX_FILE_SIZE" value="3000000" />-->
+<!--                        <input type="file" name="images[]" class="form-control" multiple="true"/>-->
+<!--                    </div>-->
                     <br><br>
                     <div class="btn-group">
                         <input type="submit" class="btn btn-default" value="Сохранить">

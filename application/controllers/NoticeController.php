@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\View;
+use app\lib\MyFile;
 use app\models\Notice;
 
 class NoticeController extends Controller
@@ -87,6 +88,11 @@ class NoticeController extends Controller
 
                 if($notice->save())
                 {
+                    if(isset($_FILES['images']))
+                    {
+                       // MyFile::uploadFiles($_FILES['images'], UPLOAD_DIR . 'notes\\' . $notice->insert_id);
+                    }
+
                     $_SESSION['success'] = "Заметка '{$notice->header}' успешно $st!!!";
                     header("location: /notice?cat=$notice->category");
                 }
