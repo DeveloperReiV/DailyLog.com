@@ -66,7 +66,7 @@ class Model
         $db = new DataBase();
         $db->setClassName(get_called_class());
 
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value';
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value ORDER BY id DESC';
         $res = $db->query($sql, [':value' => $value]);
 
         if(!empty($res))

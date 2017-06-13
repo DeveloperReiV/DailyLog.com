@@ -18,7 +18,7 @@ class MyFile
     {
         if(!file_exists($filepath))
         {
-            mkdir($filepath);
+            mkdir($filepath, 0777, true);
         }
 
         // Проверяем загружен ли файл
@@ -47,7 +47,7 @@ class MyFile
     {
         if(!file_exists($path))
         {
-            mkdir($path);
+            mkdir($path,0777, true);
         }
         $file_count = count($masfiles['name']);
 

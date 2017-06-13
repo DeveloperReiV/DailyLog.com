@@ -35,8 +35,8 @@
                                 <td><?=$item->owner?></td>
                                 <td><?=$item->phone?></td>
                                 <td class="title-panel-imp-note" width="5%">
-                                    <a href="/teldir/edit?id=<?=$item->id?>" title="Редактировать"><span class="glyphicon glyphicon-pencil"></a></span>
-                                    <a href="/teldir/delete?id=<?=$item->id?>" title="Удалить"><span class="glyphicon glyphicon-remove"></a></span>
+                                    <a href="/teldir/edit?id=<?=$item->id?>" title="Редактировать <?=$item->phone?>"><span class="glyphicon glyphicon-pencil"></a></span>
+                                    <a href="/teldir/delete?id=<?=$item->id?>" title="Удалить <?=$item->phone?>"><span class="glyphicon glyphicon-remove"></a></span>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

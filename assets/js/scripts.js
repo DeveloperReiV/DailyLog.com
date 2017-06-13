@@ -1,44 +1,8 @@
-/**
- * Событие загрузки страницы
- */
-window.onload = function(){
-	clock();
+$(document).ready(function(){
+	clock(); //часы
 
-	/*куки активного пункта меню*/
-	//CookieMenu();
-	/****************************/
-
-	//clearCookie();
-};
-
-
-function clearCookie()
-{
-	$.cookie("menuCookie", null);
-}
-
-/**
- * Установка активного пункта меню
- */
-/*function CookieMenu()
-{
-	$('#menu li').on('click', function() {
-		var list = [];
-		var item = $(this);
-		list.push(item.attr("id"));
-		$.cookie("menuCookie", list.join(','));
-		return;
-	});
-
-	if($.cookie("menuCookie") == null) {
-		return;
-	}
-	var chMap = $.cookie("menuCookie").split(',');
-	for (var i in chMap){
-		$('#'+chMap[i]).prop("class", "active");
-	}
-}*/
-
+	$('.title-panel-imp-note a').tooltip();  //Добавление всплывающей подсказки к иконтакам редактирования и удаления
+});
 
 /**
  * часы (дата и время) на странице
@@ -60,7 +24,7 @@ function clock()
 	if (seconds <= 9) seconds = "0" + seconds;
 	if (month_num <= 9) month_num = "0" + month_num;
 
-	date_time = 'дата(' + day + "." + month_num + "." + d.getFullYear() + ')   время(' + hours + ":" + minutes + ":" + seconds + ')';
+	date_time = day + "." + month_num + "." + d.getFullYear() + '  ' +hours + ":" + minutes + ":" + seconds;
 
 	if (document.layers)
 	{
@@ -73,3 +37,6 @@ function clock()
 	}
 	setTimeout("clock()", 1000);
 }
+
+
+

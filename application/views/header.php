@@ -3,9 +3,8 @@
     <link rel="shortcut icon" href="../../favicon.ico">
 
 
-    <link rel="stylesheet" type="text/css" href="/../assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="/../assets/css/bootstrap-theme.css">
-    <link rel="stylesheet" type="text/css" href="/../assets/css/carousel.css">
+    <link rel="stylesheet" type="text/css" href="/../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/../assets/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="/../assets/css/style.css">
 </head>
 
@@ -15,7 +14,7 @@
 <body>
 <?php endif; ?>
 <div class="container-fluid">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0;">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -36,14 +35,7 @@
                 </ul>
 
                 <?php if(!empty($_SESSION['user'])): ?>
-                <form class="navbar-form navbar-right" action="notice" role="search" method="post">
-                    <div class="input-group">
-                        <input type="text" name="search_text" class="form-control" placeholder="Строка поиска">
-                        <span class="input-group-btn">
-                             <button type="submit" class="btn btn-default">Найти</button>
-                        </span>
-                    </div>
-                </form>
+                    <div class="navbar-form navbar-right"> <span>Привет, Пушистик!!!</span>&nbsp;&nbsp;&nbsp;<a href="user/exit">выход</a></div>
                 <?php endif; ?>
 
 
@@ -52,14 +44,25 @@
     </nav>
 
     <?php if(!empty($_SESSION['user'])): ?>
-    <div class="panel panel-default opacity">
-        <div class="panel-heading">
-            <h4><b>
+        <table class="opacity data-time" style="width: 100%; margin-top: 5px;margin-bottom: 5px;">
+            <tr>
+                <td style="width: 50%;">
                     <span id="doc_time"></span>
-                    <span style="float: right;">Привет, Пушистик!!!&nbsp;&nbsp;&nbsp;   <a href="user/exit">выход</a></span>
-            </b></h4>
-        </div>
-    </div>
+                </td>
+
+                <td style="width: 50%;">
+                    <form action="notice" role="search" method="post" style="margin-bottom: 0;">
+                        <div class="input-group">
+                            <input type="text" name="search_text" class="form-control" placeholder="Строка поиска">
+                        <span class="input-group-btn">
+                             <button type="submit" class="btn btn-default">Найти</button>
+                        </span>
+                        </div>
+                    </form>
+                </td>
+
+            </tr>
+        </table>
     <?php endif; ?>
 
 </div>
