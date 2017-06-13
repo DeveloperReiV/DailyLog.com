@@ -22,7 +22,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Ежедневник</a>
+                <a class="navbar-brand site-name" href="/">Ежедневник</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -35,7 +35,7 @@
                 </ul>
 
                 <?php if(!empty($_SESSION['user'])): ?>
-                    <div class="navbar-form navbar-right"> <span>Привет, Пушистик!!!</span>&nbsp;&nbsp;&nbsp;<a href="user/exit">выход</a></div>
+                    <div class="navbar-form navbar-right"> <span class="user-title">Привет, Пушистик!!!</span>&nbsp;&nbsp;&nbsp;<a href="user/exit">выход</a></div>
                 <?php endif; ?>
 
 

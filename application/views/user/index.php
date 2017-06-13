@@ -1,7 +1,9 @@
 <title>Личные данные</title>
 
 <div class="panel panel-default opacity">
-    <div class="panel-heading">Личные данные</div>
+    <div class="panel-heading">
+        <h4 class="title-panel-imp-note"><p class="panel-header">Личные данные</p></h4>
+    </div>
     <div class="panel-body">
 
         <div class="row">

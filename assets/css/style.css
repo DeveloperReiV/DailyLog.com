@@ -46,7 +46,7 @@
 	border-bottom-left-radius:0;
 }
 
-
+/*стиль загаловка панели*/
 .panel-header{
 	background-color: #EEE;
 	color: #737373;
@@ -57,7 +57,22 @@
 	text-shadow: 1px 1px 0px #EEE, 3px 3px 0px #707070;
 }
 
+/*время и дата*/
 .data-time {
 	text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
 	font-size: 2em;
+}
+
+/*название сайта в шапке*/
+.site-name{
+	font-family: Arial;
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #fff;
+	text-shadow: 0 0 20px #fefcc9, 10px -10px 30px #feec85, -20px -20px 40px #ffae34, 20px -40px 50px #ec760c, -20px -60px 60px #cd4606, 0 -80px 70px #973716, 10px -90px 80px #451b0e;
+}
+
+.user-title{
+	font-size: 20px;
+	text-shadow:3px 3px 10px red,-3px -3px 10px yellow;color: #101921;
 }

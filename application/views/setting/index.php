@@ -1,7 +1,9 @@
 <title>Настройки</title>
 
 <div class="panel panel-default opacity">
-    <div class="panel-heading">Фоновое изображение</div>
+    <div class="panel-heading">
+        <h4 class="title-panel-imp-note"><p class="panel-header">Фоновое изображение</p></h4>
+    </div>
     <div class="panel-body">
 
         <div class="row">

@@ -3,7 +3,7 @@
 <div class="panel panel-default opacity">
 
     <div class="panel-heading">
-        <h4 class="title-panel-imp-note">Подробная информация</h4>
+        <h4 class="title-panel-imp-note"><p class="panel-header">Подробная информация</p></h4>
     </div>
 
     <div class="panel-body">
