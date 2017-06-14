@@ -10,15 +10,15 @@
         <div class="row">
             <?php foreach($imp_notes as $note): ?>
                 <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail note-container" <?if (!comparisonDate($note->date)) echo 'style="border-color: red"';?>>
+                    <div class="thumbnail boxNote" <?if (!comparisonDate($note->date)) echo 'style="border-color: red"';?>>
                         <div class="caption">
-                            <h3><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></h3>
+                            <h3><a href="/notice/view?id=<?=$note->id?>" class="title-note"><?=$note->header?></a></h3>
                             <h4><?=getDateFromTimestamp($note->date) . "  " . getTimeFromTimestamp($note->date)?></h4>
 
                             <?php if(strlen($note->description) > 50):?>
-                            <p><?=mb_substr($note->description, 0, 50) . '...'?></p>
+                            <p class="text-table"><?=mb_substr($note->description, 0, 50) . '...'?></p>
                             <?php else: ?>
-                            <p><?=$note->description?></p>
+                            <p class="text-table"><?=$note->description?></p>
                             <?php endif; ?>
 
                         </div>
@@ -40,15 +40,15 @@
         <div class="row">
         <?php foreach($notes as $note): ?>
             <div class="col-sm-6 col-md-4">
-                <div class="thumbnail note-container" <?if (!comparisonDate($note->date)) echo 'style="border-color: red"';?>>
+                <div class="thumbnail boxNote" <?if (!comparisonDate($note->date)) echo 'style="border-color: red"';?>>
                     <div class="caption">
-                        <h3><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></h3>
+                        <h3><a href="/notice/view?id=<?=$note->id?>" class="title-note"><?=$note->header?></a></h3>
                         <h4><?=getDateFromTimestamp($note->date)?></h4>
 
                         <?php if(strlen($note->description) > 50):?>
-                            <p><?=mb_substr($note->description, 0, 50) . '...'?></p>
+                            <p class="text-table"><?=mb_substr($note->description, 0, 50) . '...'?></p>
                         <?php else: ?>
-                            <p><?=$note->description?></p>
+                            <p class="text-table"><?=$note->description?></p>
                         <?php endif; ?>
 
                     </div>

@@ -18,9 +18,9 @@ class SettingController extends Controller
 
     public function action_upload()
     {
-        if($_FILES['file'])
+        if($_FILES['fileBack'])
         {
-           MyFile::uploadFile($_FILES['file'],UPLOAD_DIR . 'background');
+           MyFile::uploadFile($_FILES['fileBack'],UPLOAD_DIR . 'background');
            header('location: \setting');
         }
     }

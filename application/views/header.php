@@ -11,7 +11,7 @@
 <?php if(!empty($_COOKIE['backIMG'])):?>
 <body style="background: url(<?=SITE_HOST . '/application/upload/background/' . $_COOKIE['backIMG']?>); background-size: 100%">
 <?php else: ?>
-<body>
+<body style="background-color: #d5d5d5">
 <?php endif; ?>
 <div class="container-fluid">
     <nav class="navbar navbar-default" role="navigation" style="margin-bottom: 0;">

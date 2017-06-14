@@ -3,9 +3,13 @@ $(document).ready(function(){
 
 	$('.title-panel-imp-note a').tooltip();  //Добавление всплывающей подсказки к иконтакам редактирования и удаления
 	$('.pagination a').tooltip();
+	$('#panelBack a').tooltip();
+	$('#delBack a').tooltip();
 
 	validateFormNote();		//Валидация формы добавления/изменения заметки
 	validateFormPhone();	//Валидация формы добавления/изменения телефонной записи
+
+	fileThere();
 
 });
 
@@ -70,7 +74,10 @@ function validateFormPhone(){
 	$('#formPhone').validate({
 		rules:{
 			owner: 'required',
-			phone: 'required'
+			phone: {
+				required: true,
+				digits: true
+			}
 		},
 
 		messages:{
@@ -78,10 +85,19 @@ function validateFormPhone(){
 				required: 'Введите владельца!'
 			},
 			phone:{
-				required: 'Введите телефон!'
+				required: 'Введите телефон!',
+				digits: 'Номер (только цифры)!'
 			}
 		}
 	});
+}
+
+function fileThere(){
+	$('#fileBack').on('change', function(){
+		$('#btnLoadBack').removeAttr('disabled');
+	});
+
+
 }
 
 

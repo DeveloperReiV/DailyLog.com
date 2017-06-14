@@ -17,7 +17,7 @@
 
                     <thead>
                     <?php if(!empty($teldir)): ?>
-                        <tr class="info table-head">
+                        <tr class="info table-head head-column">
                             <td>Владелец</td>
                             <td>Телефон</td>
                             <td></td>
@@ -29,7 +29,7 @@
                     <?php endif; ?>
                     </thead>
 
-                    <tbody>
+                    <tbody class="text-table">
                     <?php if(!empty($teldir)): ?>
                         <?php foreach($teldir as $item): ?>
                             <tr>

@@ -12,23 +12,23 @@
 
                 <table class="table">
                     <tr style="width: 60%">
-                        <td class="active"><h3>Категория</h3></td>
+                        <td class="active head-cells"><h3>Категория</h3></td>
                         <td><h3><?=$category[$note->category]?></h3></td>
                     </tr>
                     <tr>
-                        <td class="active"><h3>Заметка</h3></td>
+                        <td class="active head-cells"><h3>Заметка</h3></td>
                         <td><h3><?=$note->header?></h3></td>
                     </tr>
                     <tr>
-                        <td class="active"><h3>Дата</h3></td>
+                        <td class="active head-cells"><h3>Дата</h3></td>
                         <td><h3><?=getDateFromTimestamp($note->date)?></h3></td>
                     </tr>
                     <tr>
-                        <td class="active"><h3>Время</h3></td>
+                        <td class="active head-cells"><h3>Время</h3></td>
                         <td><h3><?=getTimeFromTimestamp($note->date)?></h3></td>
                     </tr>
                     <tr>
-                        <td class="active"><h3>Статус</h3></td>
+                        <td class="active head-cells"><h3>Статус</h3></td>
 
                         <?php if($note->importance == 1): ?>
                             <td class="success"><h3>Важно</h3></td>
@@ -37,13 +37,13 @@
                         <?php endif; ?>
                     </tr>
                     <tr>
-                        <td class="active"><h3>Дата создания</h3></td>
+                        <td class="active head-cells"><h3>Дата создания</h3></td>
                         <td><h3><?=date('d.m.Y / G:i',strtotime($note->crt_date))?></h3></td>
                     </tr>
 
                     <?php if(!comparisonDate($note->date)): ?>
                     <tr>
-                        <td class="danger"><h3>Просрочено</h3></td>
+                        <td class="danger head-cells"><h3>Просрочено</h3></td>
                         <td class="danger"></td>
                     </tr>
                     <?php endif; ?>
@@ -55,7 +55,7 @@
             <div class="col-xs-6">
                 <table class="table">
                     <tr>
-                        <td class="active"><h3>Описание</h3></td>
+                        <td class="active head-cells"><h3>Описание</h3></td>
                     </tr>
                     <tr>
                         <td><h3><?=$note->description?></h3></td>

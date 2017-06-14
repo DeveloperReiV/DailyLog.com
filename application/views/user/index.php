@@ -14,7 +14,7 @@
             </div>
 
             <div class="col-xs-8">
-                <table class="table">
+                <table class="table text-table">
                     <?php foreach($user as $item): ?>
                     <tr>
                         <td class="active" style="width: 20%">Имя</td>

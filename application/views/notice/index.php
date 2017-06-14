@@ -17,7 +17,7 @@
 
                     <div class="col-sm-6">
                         <table class="table" style="margin: 0; text-align: center;">
-                            <tr>
+                            <tr class="text-table">
                                 <td class="danger">Просроченные заметки</td>
                                 <td class="success">Важные заметки</td>
                                 <td class="warning">Не важные заметки</td>
@@ -40,7 +40,7 @@
 
                         <thead>
                             <?php if(!empty($notices)): ?>
-                                <tr class="info table-head">
+                                <tr class="info table-head head-column">
                                     <td width="10%">Заметка</td>
                                     <td width="50%">Описание</td>
                                     <td width="5%">Дата</td>
@@ -55,14 +55,14 @@
                             <?php endif; ?>
                         </thead>
 
-                        <tbody>
+                        <tbody class="text-table">
                             <?php if(!empty($notices)): ?>
                                 <?php foreach($notices as $note): ?>
                                     <tr>
                                         <?php  if(comparisonDate($note->date)):?>
-                                            <td><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></td>
+                                            <td><a href="/notice/view?id=<?=$note->id?>" class="title-note"><?=$note->header?></a></td>
                                         <?php  else: ?>
-                                            <td class="danger"><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></td>
+                                            <td class="danger"><a href="/notice/view?id=<?=$note->id?>" class="title-note"><?=$note->header?></a></td>
                                         <?php  endif;?>
 
                                         <td><?=$note->description?></td>
@@ -70,7 +70,7 @@
                                         <td><?=getTimeFromTimestamp($note->date)?></td>
 
                                         <?php if($note->importance == 1): ?>
-                                            <td class="success"></td>
+                                            <td class="success" style="text-align: center"><p class="important">!</p></td>
                                         <?php else: ?>
                                             <td class="warning"></td>
                                         <?php endif; ?>
