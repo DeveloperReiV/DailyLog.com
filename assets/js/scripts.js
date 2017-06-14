@@ -2,13 +2,16 @@ $(document).ready(function(){
 	clock(); //часы
 
 	$('.title-panel-imp-note a').tooltip();  //Добавление всплывающей подсказки к иконтакам редактирования и удаления
+
+	validateFormNote();		//Валидация формы добавления/изменения заметки
+	validateFormPhone();	//Валидация формы добавления/изменения телефонной записи
+
 });
 
 /**
  * часы (дата и время) на странице
  */
-function clock()
-{
+function clock(){
 	var d = new Date();
 	var month_num = d.getMonth();
 	var day = d.getDate();
@@ -36,6 +39,48 @@ function clock()
 		document.getElementById("doc_time").innerHTML = date_time;
 	}
 	setTimeout("clock()", 1000);
+}
+
+//Валидация формы добавления/изменения заметки
+function validateFormNote(){
+	$('#formNote').validate({
+		rules:{
+			category: 'required',
+			header: 'required',
+			date: 'required'
+		},
+
+		messages:{
+			category:{
+				required: 'Выберете категорию!'
+			},
+			header:{
+				required: 'Введите заголовок!'
+			},
+			date:{
+				required: 'Заполните дату!'
+			}
+		}
+	});
+}
+
+//Валидация формы добавления/изменения телефонной записи
+function validateFormPhone(){
+	$('#formPhone').validate({
+		rules:{
+			owner: 'required',
+			phone: 'required'
+		},
+
+		messages:{
+			owner:{
+				required: 'Введите владельца!'
+			},
+			phone:{
+				required: 'Введите телефон!'
+			}
+		}
+	});
 }
 
 

@@ -2,7 +2,7 @@
 
 <div class="panel panel-default opacity">
     <div class="panel-heading">
-        <h4 class="title-panel-imp-note">Дабавление заметки</h4>
+        <h4 class="title-panel-imp-note"><p class="panel-header">Дабавление/изменение заметки</p></h4>
     </div>
 
     <div class="panel-body">
@@ -10,39 +10,39 @@
 
             <?php if(empty($note)): ?>
                 <!-- форма добавления заметки-->
-                <form action="/notice/insert" method="post" enctype="multipart/form-data">
+                <form action="/notice/insert" method="post" enctype="multipart/form-data" id="formNote">
                 <div class="input-group" style="width: 20%;">
                     <span class="input-group-addon">Категория *</span>
-                    <select class="form-control" name="category">
+                    <select class="form-control" name="category" id="category">
                         <?php foreach($category as $key => $cat): ?>
                         <option value="<?=$key?>"><?=$cat?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
                 <br>
-                <div class="input-group">
+                <div class="input-group" style="width: 50%;">
                     <span class="input-group-addon">Заголовок *</span>
-                    <input type="text" class="form-control" name="header">
+                    <input type="text" class="form-control" name="header" id="header">
                 </div>
                 <br>
-                <div class="input-group">
+                <div class="input-group" style="width: 50%;">
                     <span class="input-group-addon">Описание</span>
-                    <textarea type="text" class="form-control" rows="5" name="description"></textarea>
+                    <textarea type="text" class="form-control" rows="5" name="description" id="description"></textarea>
                 </div>
                 <br>
                 <div class="input-group" style="width: 10%;">
                     <span class="input-group-addon" >Дата *</span>
-                    <input type="date" class="form-control" name="date">
+                    <input type="date" class="form-control" name="date" id="date">
                 </div>
                 <br>
                 <div class="input-group" style="width: 10%;">
                     <span class="input-group-addon">Время</span>
-                    <input type="time" class="form-control" name="time" min="00:01" max="23:59">
+                    <input type="time" class="form-control" name="time" id="time" min="00:00" max="23:59">
                 </div>
                 <br>
                 <div class="input-group" style="width: 15%;">
                     <span class="input-group-addon">Статус</span>
-                    <select class="form-control" name="importance">
+                    <select class="form-control" name="importance" id="importance">
                         <option value="0" class="alert alert-warning well-sm status">Не важно</option>
                         <option value="1" class="alert alert-success well-sm status">Важно</option>
                     </select>
@@ -62,10 +62,10 @@
 
             <?php else: ?>
                 <!-- форма изменения заметки-->
-                <form action="/notice/insert?id=<?=$note->id?>" method="post">
+                <form action="/notice/insert?id=<?=$note->id?>" method="post" enctype="multipart/form-data" id="formNote">
                     <div class="input-group" style="width: 20%;">
                         <span class="input-group-addon">Категория *</span>
-                        <select class="form-control" name="category">
+                        <select class="form-control" name="category" id="category">
                             <?php foreach($category as $key => $cat): ?>
 
                                 <?php if($note->category == $key): ?>
@@ -78,29 +78,29 @@
                         </select>
                     </div>
                     <br>
-                    <div class="input-group">
+                    <div class="input-group" style="width: 50%;">
                         <span class="input-group-addon">Заголовок *</span>
-                        <input type="text" class="form-control" name="header" value="<?=$note->header?>">
+                        <input type="text" class="form-control" name="header" id="header" value="<?=$note->header?>">
                     </div>
                     <br>
-                    <div class="input-group">
+                    <div class="input-group" style="width: 50%;">
                         <span class="input-group-addon">Описание</span>
-                        <textarea type="text" class="form-control" rows="5" name="description"><?=$note->description?></textarea>
+                        <textarea type="text" class="form-control" rows="5" name="description" id="description"><?=$note->description?></textarea>
                     </div>
                     <br>
                     <div class="input-group" style="width: 10%;">
                         <span class="input-group-addon" >Дата *</span>
-                        <input type="date" class="form-control" name="date" value="<?=date('Y-m-d',strtotime($note->date))?>">
+                        <input type="date" class="form-control" name="date" id="date" value="<?=date('Y-m-d',strtotime($note->date))?>">
                     </div>
                     <br>
                     <div class="input-group" style="width: 10%;">
                         <span class="input-group-addon">Время</span>
-                        <input type="time" class="form-control" name="time" min="0:01" max="23:59" value="<?=getTimeFromTimestamp($note->date)?>">
+                        <input type="time" class="form-control" name="time" id="time" min="00:00" max="23:59" value="<?=getTimeFromTimestamp($note->date)?>">
                     </div>
                     <br>
                     <div class="input-group" style="width: 15%;">
                         <span class="input-group-addon">Статус</span>
-                        <select class="form-control" name="importance">
+                        <select class="form-control" name="importance" id="importance">
                             <option <?php if($note->importance == '0') echo 'selected'?> value="0" class="alert alert-warning well-sm status">Не важно</option>
                             <option <?php if($note->importance == '1') echo 'selected'?> value="1" class="alert alert-success well-sm status">Важно</option>
                         </select>

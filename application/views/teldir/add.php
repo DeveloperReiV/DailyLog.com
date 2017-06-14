@@ -2,22 +2,22 @@
 
 <div class="panel panel-default opacity">
     <div class="panel-heading">
-        <h4 class="title-panel-imp-note">Дабавление телефона</h4>
+        <h4 class="title-panel-imp-note"><p class="panel-header">Дабавление/изменение телефона</p></h4>
     </div>
 
     <div class="panel-body">
         <?php if(!empty($_SESSION['warning'])) showWarning($_SESSION['warning']); ?>
 
             <?php if(empty($teldir)): ?>
-                <form action="/teldir/insert" method="post">
-                    <div class="input-group">
+                <form action="/teldir/insert" method="post" id="formPhone">
+                    <div class="input-group" style="width: 50%">
                         <span class="input-group-addon">Владелец *</span>
-                        <input type="text" class="form-control" name="owner">
+                        <input type="text" class="form-control" name="owner" id="owner">
                     </div>
                     <br>
-                    <div class="input-group">
+                    <div class="input-group" style="width: 50%">
                         <span class="input-group-addon">Телефон *</span>
-                        <input type="text" class="form-control" name="phone">
+                        <input type="text" class="form-control" name="phone" id="phone">
                     </div>
                     <br>
                     <div class="btn-group">
@@ -28,15 +28,15 @@
 
             <?php else: ?>
 
-                <form action="/teldir/insert?id=<?=$teldir->id?>" method="post">
-                    <div class="input-group">
+                <form action="/teldir/insert?id=<?=$teldir->id?>" method="post" id="formPhone">
+                    <div class="input-group" style="width: 50%">
                         <span class="input-group-addon">Владелец *</span>
-                        <input type="text" class="form-control" name="owner" value="<?=$teldir->owner?>">
+                        <input type="text" class="form-control" name="owner" id="owner" value="<?=$teldir->owner?>">
                     </div>
                     <br>
-                    <div class="input-group">
+                    <div class="input-group" style="width: 50%">
                         <span class="input-group-addon">Телефон *</span>
-                        <input type="text" class="form-control" name="phone" value="<?=$teldir->phone?>">
+                        <input type="text" class="form-control" name="phone" id="phone" value="<?=$teldir->phone?>">
                     </div>
                     <br>
                     <div class="btn-group">
