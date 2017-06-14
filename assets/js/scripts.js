@@ -2,6 +2,7 @@ $(document).ready(function(){
 	clock(); //часы
 
 	$('.title-panel-imp-note a').tooltip();  //Добавление всплывающей подсказки к иконтакам редактирования и удаления
+	$('.pagination a').tooltip();
 
 	validateFormNote();		//Валидация формы добавления/изменения заметки
 	validateFormPhone();	//Валидация формы добавления/изменения телефонной записи

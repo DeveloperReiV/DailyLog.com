@@ -9,5 +9,5 @@ class TelDir extends Model
 {
     protected static $table = 'teldir';
 
-    public static $item_on_page = 4;        //колличество записей на странице
+    public static $item_on_page = 10;        //колличество записей на странице
 }

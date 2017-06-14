@@ -88,11 +88,11 @@
 
                     <?php if(!empty($notices) && $count_page>1): ?>
                     <ul class="pagination">
-                        <li><a href="notice?cat=<?=$ctg?>&p=1">&laquo;</a></li>
+                        <li><a href="notice?cat=<?=$ctg?>&p=1" title="Первая страница">&laquo;</a></li>
                         <?php for($i = 1; $i<=$count_page; $i++): ?>
                         <li <?php if($i == $p || empty($p)) echo 'class="active"' ?>><a href="notice?cat=<?=$ctg?>&p=<?=$i?>"><?=$i?></a></li>
                         <?php endfor; ?>
-                        <li><a href="notice?cat=<?=$ctg?>&p=<?=$count_page?>">&raquo;</a></li>
+                        <li><a href="notice?cat=<?=$ctg?>&p=<?=$count_page?>" title="Последняя страница">&raquo;</a></li>
                     </ul>
                     <?php endif; ?>
 

@@ -3,8 +3,6 @@
 <div class="row">
     <div class="col-sm-12">
 
-        <?php if(!empty($_SESSION['success']))showSuccess($_SESSION['success']); ?>
-
         <div class="panel panel-default opacity">
 
             <div class="panel-heading" style="text-align: right;">
@@ -12,6 +10,9 @@
             </div>
 
             <div class="panel-body">
+
+                <?php if(!empty($_SESSION['success']))showSuccess($_SESSION['success']); ?>
+
                 <table class="table table-hover">
 
                     <thead>

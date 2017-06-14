@@ -8,7 +8,7 @@ class Notice extends Model
 {
     protected static $table = 'notice';
 
-    public static $item_on_page = 4;        //колличество записей на странице
+    public static $item_on_page = 10;        //колличество записей на странице
 
     /**
      * Формирует массив заметок разбитый по категориям.
