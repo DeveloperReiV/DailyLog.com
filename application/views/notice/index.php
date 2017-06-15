@@ -70,7 +70,7 @@
                                         <td><?=getTimeFromTimestamp($note->date)?></td>
 
                                         <?php if($note->importance == 1): ?>
-                                            <td class="success" style="text-align: center"><p class="important">!</p></td>
+                                            <td class="success" style="text-align: center"><b class="important">!</b></td>
                                         <?php else: ?>
                                             <td class="warning"></td>
                                         <?php endif; ?>

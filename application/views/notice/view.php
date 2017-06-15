@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-xs-6">
 
-                <table class="table">
+                <table class="table text-table">
                     <tr style="width: 60%">
                         <td class="active head-cells"><h3>Категория</h3></td>
                         <td><h3><?=$category[$note->category]?></h3></td>
@@ -53,7 +53,7 @@
             </div>
 
             <div class="col-xs-6">
-                <table class="table">
+                <table class="table text-table">
                     <tr>
                         <td class="active head-cells"><h3>Описание</h3></td>
                     </tr>

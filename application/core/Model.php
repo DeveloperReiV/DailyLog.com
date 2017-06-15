@@ -39,7 +39,6 @@ class Model
     {
         $db = new DataBase();
         $db->setClassName(get_called_class());
-        $sql = "";
 
         if(!empty($first))
         {

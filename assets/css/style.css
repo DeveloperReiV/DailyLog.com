@@ -171,7 +171,7 @@ input.error, select.error  {
 .important {
 	font-size: 1.2em;
 	font-weight: bold;
-	text-shadow: 1px 1px 3px #666, -1px -1px 3px #FFF, 1px 1px #666, -1px -1px #FFF; color:black;
+	text-shadow: 1px 1px 3px #666, -1px -1px 3px #FFF, 1px 1px #666, -1px -1px #FFF; color: black;
 }
 
 
