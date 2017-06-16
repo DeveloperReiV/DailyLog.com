@@ -14,8 +14,11 @@ class MainController extends Controller
     public function action_index()
     {
         $view = new View();
-        $view->notes = Notice::findByColumn('importance', 1);
-        $view->imp_notes = Main::getNotesImportanceToday($view->notes);
+        $view->notes = Notice::findByColumn('importance', 1);       //выбираем все важные заметки
+        if($view->notes)
+        {
+            $view->imp_notes = Main::getNotesImportanceToday($view->notes); //выбираем все важные заметки на сегодня
+        }
         $view->category = getAllCategory();                         //получаем список всех категорий
         $view->display('main\index.php');
     }

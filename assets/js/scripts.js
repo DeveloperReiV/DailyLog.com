@@ -10,7 +10,6 @@ $(document).ready(function(){
 	validateFormPhone();	//Валидация формы добавления/изменения телефонной записи
 
 	fileThere();
-
 });
 
 /**
@@ -99,6 +98,7 @@ function fileThere(){
 
 
 }
+
 
 
 

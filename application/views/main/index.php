@@ -1,6 +1,6 @@
 <title>Главная</title>
 
-<?php if($imp_notes): ?>
+<?php if(!empty($imp_notes)): ?>
 <div class="panel panel-default opacity">
     <div class="panel-heading">
         <h4 class="title-panel-imp-note"><p class="panel-header">Важное на сегодня</p></h4>
@@ -16,9 +16,9 @@
                             <h4><?=getDateFromTimestamp($note->date) . "  " . getTimeFromTimestamp($note->date)?></h4>
 
                             <?php if(strlen($note->description) > 50):?>
-                            <p class="text-table"><?=mb_substr($note->description, 0, 50) . '...'?></p>
+                                <p class="text-table"><?=mb_substr($note->description, 0, 50) . '...'?></p>
                             <?php else: ?>
-                            <p class="text-table"><?=$note->description?></p>
+                                <p class="text-table"><?=$note->description?></p>
                             <?php endif; ?>
 
                         </div>
@@ -31,6 +31,8 @@
 </div>
 <?php endif; ?>
 
+
+<?php if(!empty($notes)): ?>
 <div class="panel panel-default opacity">
     <div class="panel-heading">
         <h4 class="title-panel-imp-note"><p class="panel-header">Важные заметки</p></h4>
@@ -59,3 +61,4 @@
 
     </div>
 </div>
+<?php endif; ?>

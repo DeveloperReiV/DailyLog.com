@@ -64,7 +64,7 @@
             </div>
 
         </div>
-
+        <a href="/notice/edit?id=<?=$note->id?>"><h3><span class="label label-default">Редактировать</span></h3></a>
         <a href="/notice?cat=<?=$note->category?>"><h3><span class="label label-default">К заметкам</span></h3></a>
 
     </div>

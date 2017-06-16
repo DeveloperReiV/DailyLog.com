@@ -73,10 +73,14 @@ class MyFile
      */
     public static function getAllFiles($dir)
     {
-        $images = scandir($dir, 1);
-        unset($images[count($images)-1]);
-        unset($images[count($images)-1]);
-        return $images;
+        if(file_exists($dir))
+        {
+            $images = scandir($dir, 1);
+            unset($images[count($images)-1]);
+            unset($images[count($images)-1]);
+            return $images;
+        }
+        return false;
     }
 
     /**

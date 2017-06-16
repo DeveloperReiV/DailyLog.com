@@ -65,7 +65,13 @@
                                             <td class="danger"><a href="/notice/view?id=<?=$note->id?>" class="title-note"><?=$note->header?></a></td>
                                         <?php  endif;?>
 
-                                        <td><?=$note->description?></td>
+                                        <?php if(strlen($note->description) < 90):?>
+                                            <td><?=$note->description?></td>
+                                        <?php else: ?>
+                                            <td><?=mb_substr($note->description, 0, 90) . '...'?></td>
+                                        <?php endif; ?>
+
+
                                         <td><?=getDateFromTimestamp($note->date)?></td>
                                         <td><?=getTimeFromTimestamp($note->date)?></td>
 
@@ -107,11 +113,11 @@
 
                 <div class="panel-body">
                     <div class="table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover text-table">
 
                             <thead>
                             <?php if(!empty($notes_search)): ?>
-                                <tr class="info table-head">
+                                <tr class="info table-head head-column">
                                     <td width="10%">Категория</td>
                                     <td width="10%">Заметка</td>
                                     <td width="50%">Описание</td>
@@ -133,17 +139,22 @@
                                     <tr>
                                         <td><?=$category[$note->category] ?></td>
                                         <?php  if(comparisonDate($note->date)):?>
-                                            <td><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></td>
+                                            <td><a href="/notice/view?id=<?=$note->id?>" class="title-note"><?=$note->header?></a></td>
                                         <?php  else: ?>
                                             <td class="danger"><a href="/notice/view?id=<?=$note->id?>"><?=$note->header?></a></td>
                                         <?php  endif;?>
 
-                                        <td><?=$note->description?></td>
+                                        <?php if(strlen($note->description) < 90):?>
+                                            <td><?=$note->description?></td>
+                                        <?php else: ?>
+                                            <td><?=mb_substr($note->description, 0, 90) . '...'?></td>
+                                        <?php endif; ?>
+
                                         <td><?=getDateFromTimestamp($note->date)?></td>
                                         <td><?=getTimeFromTimestamp($note->date)?></td>
 
                                         <?php if($note->importance == 1): ?>
-                                            <td class="success"></td>
+                                            <td class="success" style="text-align: center"><b class="important">!</b></td>
                                         <?php else: ?>
                                             <td class="warning"></td>
                                         <?php endif; ?>

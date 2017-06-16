@@ -19,7 +19,7 @@ class DataBase
      * @var string - хранит имя класса для возвращаемого объекта класса при работе с базой данных
      * @access private
      */
-    private $className = 'stdClass';
+    public $className = 'stdClass';
 
     public function __construct( $host = DB_HOST, $dbname = DB_NAME, $user = DB_USER, $password = DB_PASSWORD )
     {

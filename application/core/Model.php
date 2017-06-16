@@ -158,7 +158,7 @@ class Model
         $db = new DataBase();
         $db->setClassName(get_called_class());
 
-        $sql = "SELECT * FROM " . static::$table . " WHERE concat(header,crt_date,description) LIKE '%$str%'";
+        $sql = "SELECT * FROM " . static::$table . " WHERE concat(header,description) LIKE '%$str%'";
 
         return $db->query($sql);
     }
@@ -210,7 +210,16 @@ class Model
         $db = new DataBase();
         $db->setClassName(get_called_class());
 
-        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value ORDER BY id DESC LIMIT ' . $first . ',' . static::$item_on_page;
+        if($db->className == 'app\models\Notice')
+        {
+            $sort = 'date';
+        }
+        else
+        {
+            $sort = 'id';
+        }
+
+        $sql = 'SELECT * FROM ' . static::$table . ' WHERE ' . $column . ' = :value ORDER BY '. $sort .' DESC LIMIT ' . $first . ',' . static::$item_on_page;
         $res = $db->query($sql, [':value' => $value]);
 
         if(!empty($res))
