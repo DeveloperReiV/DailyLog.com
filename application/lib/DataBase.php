@@ -23,7 +23,15 @@ class DataBase
 
     public function __construct( $host = DB_HOST, $dbname = DB_NAME, $user = DB_USER, $password = DB_PASSWORD )
     {
-        $this->dbh = new \PDO( "mysql:host=$host;dbname=$dbname", $user, $password );
+        try
+        {
+            $this->dbh = new \PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+        }
+        catch(\PDOException $exp)
+        {
+            $error = new MyError($exp->getMessage(), $exp->getLine(), $exp->getCode(), $exp->getFile());
+            $error->show();
+        }
     }
 
     /**
@@ -68,16 +76,6 @@ class DataBase
         $result = $sth->execute($params);
         return $result;
     }
-
-    /**
-     * Получаем ID последней вставленной строки
-     *
-     * @return string
-     */
-    /*public function lastInsertId()
-    {
-        return $this->dbh->lastInsertId();
-    }*/
 
 
 }

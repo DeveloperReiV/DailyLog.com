@@ -84,6 +84,13 @@ function comparisonDate($date)
     return $date < $currentDate ? false : true;
 }
 
+/**
+ * Подготовка входных данных
+ *
+ * @param $val
+ *
+ * @return string
+ */
 function cleanInput($val)
 {
     $val = trim($val);
@@ -94,6 +101,11 @@ function cleanInput($val)
     return $val;
 }
 
+/**
+ * Получить имя контроллера из URL
+ *
+ * @return mixed
+ */
 function getNameController()
 {
     $path = parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH );

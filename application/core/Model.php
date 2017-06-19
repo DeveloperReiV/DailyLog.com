@@ -3,7 +3,6 @@
 namespace app\core;
 
 use app\lib\DataBase;
-use app\models\Notice;
 
 class Model
 {
@@ -31,9 +30,9 @@ class Model
      * Вернуть записи из таблицы начиная с $first.
      * Возвращает колличество записей для отображения на одной странице
      *
-     * @param $first
+     * @param int $first
      *
-     * @return object
+     * @return bool|object
      */
     public static function findAll($first = 0)
     {
@@ -49,7 +48,14 @@ class Model
             $sql = 'SELECT * FROM ' . static::$table . ' ORDER BY id DESC';
         }
 
-        return $db->query($sql);
+        $res = $db->query($sql);
+
+        if(!empty($res))
+        {
+            return $res;
+        }
+
+        return false;
     }
 
     /**

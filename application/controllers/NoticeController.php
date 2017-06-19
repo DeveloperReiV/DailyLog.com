@@ -4,7 +4,6 @@ namespace app\controllers;
 
 use app\core\Controller;
 use app\core\View;
-use app\lib\MyFile;
 use app\models\Notice;
 
 class NoticeController extends Controller
