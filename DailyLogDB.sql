@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `surname`, `middlename`, `description`, `year`, `photo`, `phone`, `login`, `password`) VALUES
-(1, 'Анна', 'Скударнова', 'Владимировна', 'Липовая отличница', '1995-06-21', 'ava.jpg', '89200916288', 'anna', '81dc9bdb52d04dc20036dbd8313ed055');
+(1, 'User', 'User', 'User', 'description', '1994-08-12', 'ava.jpg', '89205635423', 'anna', '81dc9bdb52d04dc20036dbd8313ed055');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
